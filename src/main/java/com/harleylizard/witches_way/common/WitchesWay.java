@@ -11,6 +11,8 @@ public final class WitchesWay implements ModInitializer {
         WitchesWayBlocks.register();
         WitchesWayItems.register();
 
+        WitchesWayBlockEntities.register();
+
     }
 
     public static ResourceLocation resourceLocation(String path) {

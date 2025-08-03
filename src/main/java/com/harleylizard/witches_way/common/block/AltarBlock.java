@@ -1,19 +1,23 @@
 package com.harleylizard.witches_way.common.block;
 
+import com.harleylizard.witches_way.common.WitchesWayBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayDeque;
 import java.util.HashSet;
 import java.util.Queue;
 import java.util.Set;
 
-public final class AltarBlock extends Block {
+public final class AltarBlock extends Block implements EntityBlock {
     public static final BooleanProperty CLOTHED = BooleanProperty.create("clothed");
 
     public AltarBlock(Properties properties) {
@@ -29,6 +33,11 @@ public final class AltarBlock extends Block {
     @Override
     protected BlockState updateShape(BlockState blockState, Direction direction, BlockState blockState2, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos blockPos2) {
         return blockState.setValue(CLOTHED, countBlocks(levelAccessor, blockPos));
+    }
+
+    @Override
+    public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
+        return blockState.getValue(CLOTHED) ? WitchesWayBlockEntities.ALTAR.create(blockPos, blockState) : null;
     }
 
     public boolean countBlocks(LevelAccessor level, BlockPos blockPos) {
