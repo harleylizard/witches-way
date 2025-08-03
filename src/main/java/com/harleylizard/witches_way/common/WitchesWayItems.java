@@ -1,14 +1,73 @@
 package com.harleylizard.witches_way.common;
 
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 
 public final class WitchesWayItems {
+    public static final Item WHITE_STONE_ALTAR = blockItem(WitchesWayBlocks.WHITE_STONE_ALTAR);
+    public static final Item LIGHT_GRAY_STONE_ALTAR = blockItem(WitchesWayBlocks.LIGHT_GRAY_STONE_ALTAR);
+    public static final Item GRAY_STONE_ALTAR = blockItem(WitchesWayBlocks.GREEN_STONE_ALTAR);
+    public static final Item BLACK_STONE_ALTAR = blockItem(WitchesWayBlocks.BLACK_STONE_ALTAR);
+    public static final Item BROWN_STONE_ALTAR = blockItem(WitchesWayBlocks.BROWN_STONE_ALTAR);
+    public static final Item RED_STONE_ALTAR = blockItem(WitchesWayBlocks.RED_STONE_ALTAR);
+    public static final Item ORANGE_STONE_ALTAR = blockItem(WitchesWayBlocks.ORANGE_STONE_ALTAR);
+    public static final Item YELLOW_STONE_ALTAR = blockItem(WitchesWayBlocks.YELLOW_STONE_ALTAR);
+    public static final Item LIME_STONE_ALTAR = blockItem(WitchesWayBlocks.LIME_STONE_ALTAR);
+    public static final Item GREEN_STONE_ALTAR = blockItem(WitchesWayBlocks.GREEN_STONE_ALTAR);
+    public static final Item CYAN_STONE_ALTAR = blockItem(WitchesWayBlocks.CYAN_STONE_ALTAR);
+    public static final Item LIGHT_BLUE_STONE_ALTAR = blockItem(WitchesWayBlocks.LIGHT_BLUE_STONE_ALTAR);
+    public static final Item BLUE_STONE_ALTAR = blockItem(WitchesWayBlocks.BLUE_STONE_ALTAR);
+    public static final Item PURPLE_STONE_ALTAR = blockItem(WitchesWayBlocks.PURPLE_STONE_ALTAR);
+    public static final Item MAGENTA_STONE_ALTAR = blockItem(WitchesWayBlocks.MAGENTA_STONE_ALTAR);
+    public static final Item PINK_STONE_ALTAR = blockItem(WitchesWayBlocks.PINK_STONE_ALTAR);
+
+    public static final CreativeModeTab CREATIVE_TAB = FabricItemGroup.builder().icon(Items.STICK::getDefaultInstance).displayItems((parameters, output) -> {
+        output.accept(WHITE_STONE_ALTAR);
+        output.accept(LIGHT_GRAY_STONE_ALTAR);
+        output.accept(GRAY_STONE_ALTAR);
+        output.accept(BLACK_STONE_ALTAR);
+        output.accept(BROWN_STONE_ALTAR);
+        output.accept(RED_STONE_ALTAR);
+        output.accept(ORANGE_STONE_ALTAR);
+        output.accept(YELLOW_STONE_ALTAR);
+        output.accept(LIME_STONE_ALTAR);
+        output.accept(GREEN_STONE_ALTAR);
+        output.accept(CYAN_STONE_ALTAR);
+        output.accept(LIGHT_BLUE_STONE_ALTAR);
+        output.accept(BLUE_STONE_ALTAR);
+        output.accept(PURPLE_STONE_ALTAR);
+        output.accept(MAGENTA_STONE_ALTAR);
+        output.accept(PINK_STONE_ALTAR);
+
+
+    }).title(Component.translatable("itemGroup.witches-way")).build();
 
     public static void register() {
+        register("white_stone_altar", WHITE_STONE_ALTAR);
+        register("light_gray_stone_altar", LIGHT_GRAY_STONE_ALTAR);
+        register("gray_stone_altar", GRAY_STONE_ALTAR);
+        register("black_stone_altar", BLACK_STONE_ALTAR);
+        register("brown_stone_altar", BROWN_STONE_ALTAR);
+        register("red_stone_altar", RED_STONE_ALTAR);
+        register("orange_stone_altar", ORANGE_STONE_ALTAR);
+        register("yellow_stone_altar", YELLOW_STONE_ALTAR);
+        register("lime_stone_altar", LIME_STONE_ALTAR);
+        register("green_stone_altar", GREEN_STONE_ALTAR);
+        register("cyan_stone_altar", CYAN_STONE_ALTAR);
+        register("light_blue_stone_altar", LIGHT_BLUE_STONE_ALTAR);
+        register("blue_stone_altar", BLUE_STONE_ALTAR);
+        register("purple_stone_altar", PURPLE_STONE_ALTAR);
+        register("magenta_stone_altar", MAGENTA_STONE_ALTAR);
+        register("pink_stone_altar", PINK_STONE_ALTAR);
+
+        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, WitchesWay.resourceLocation("creative_tab"), CREATIVE_TAB);
 
     }
 
