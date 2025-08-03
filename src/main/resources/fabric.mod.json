@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "witches-way",
+  "version": "$version",
+  "name": "Witches' Way",
+  "description": "",
+  "authors": [
+    "harleylizard"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/witches-way",
+    "sources": "https://github.com/harleylizard/witches-way"
+  },
+  "license": "All Rights Reserved",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.harleylizard.witches_way.common.WitchesWay"
+    ],
+    "client": [
+      "com.harleylizard.witches_way.client.WitchesWayClient"
+    ]
+  },
+  "mixins": [
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.14",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  },
+  "custom": {
+  }
+}
