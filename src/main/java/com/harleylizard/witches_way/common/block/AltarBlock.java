@@ -1,9 +1,17 @@
 package com.harleylizard.witches_way.common.block;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+
+import java.util.ArrayDeque;
+import java.util.HashSet;
+import java.util.Queue;
+import java.util.Set;
 
 public final class AltarBlock extends Block {
     public static final BooleanProperty CLOTHED = BooleanProperty.create("clothed");
@@ -16,6 +24,60 @@ public final class AltarBlock extends Block {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(CLOTHED);
+    }
+
+    @Override
+    protected BlockState updateShape(BlockState blockState, Direction direction, BlockState blockState2, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos blockPos2) {
+        return blockState.setValue(CLOTHED, countBlocks(levelAccessor, blockPos));
+    }
+
+    public boolean countBlocks(LevelAccessor level, BlockPos blockPos) {
+        Set<BlockPos> set = new HashSet<>();
+
+        Queue<BlockPos> queue = new ArrayDeque<>();
+
+        set.add(blockPos);
+        queue.add(blockPos);
+
+        var sides = 0;
+        var tries = 0;
+
+        while (!queue.isEmpty() && tries <= 4 * 6) {
+            var current = queue.poll();
+
+            sides += countSides(level, current);
+
+            tries++;
+
+            for (var direction : Direction.Plane.HORIZONTAL) {
+                var relative = current.relative(direction);
+
+                if (!set.contains(relative) && isAltar(level, relative)) {
+                    queue.add(relative);
+
+                    set.add(relative);
+                }
+            }
+        }
+
+        return set.size() == 6 && sides == 10;
+    }
+
+    public int countSides(LevelAccessor level, BlockPos blockPos) {
+        var i = 0;
+
+        for (var direction : Direction.Plane.HORIZONTAL) {
+            if (!isAltar(level, blockPos.relative(direction))) {
+                i++;
+            }
+
+        }
+
+        return i;
+    }
+
+    public boolean isAltar(LevelAccessor level, BlockPos blockPos) {
+        return level.getBlockState(blockPos).is(this);
     }
 
 }
