@@ -5,9 +5,23 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 
 public final class WitchesWayBlocks {
+    public static final Block ALDER_LOG = log();
+    public static final Block ALDER_WOOD = log();
+    public static final Block STRIPPED_ALDER_LOG = log();
+    public static final Block STRIPPED_ALDER_WOOD = log();
+    public static final Block HAWTHORN_LOG = log();
+    public static final Block HAWTHORN_WOOD = log();
+    public static final Block STRIPPED_HAWTHORN_LOG = log();
+    public static final Block STRIPPED_HAWTHORN_WOOD = log();
+    public static final Block ROWAN_LOG = log();
+    public static final Block ROWAN_WOOD = log();
+    public static final Block STRIPPED_ROWAN_LOG = log();
+    public static final Block STRIPPED_ROWAN_WOOD = log();
+
     public static final Block WHITE_STONE_ALTAR = stoneAltar();
     public static final Block LIGHT_GRAY_STONE_ALTAR = stoneAltar();
     public static final Block GRAY_STONE_ALTAR = stoneAltar();
@@ -26,6 +40,19 @@ public final class WitchesWayBlocks {
     public static final Block PINK_STONE_ALTAR = stoneAltar();
 
     public static void register() {
+        register("alder_log", ALDER_LOG);
+        register("alder_wood", ALDER_WOOD);
+        register("stripped_alder_log", STRIPPED_ALDER_LOG);
+        register("stripped_alder_wood", STRIPPED_ALDER_WOOD);
+        register("hawthorn_log", HAWTHORN_LOG);
+        register("hawthorn_wood", HAWTHORN_WOOD);
+        register("stripped_hawthorn_log", STRIPPED_HAWTHORN_LOG);
+        register("stripped_hawthorn_wood", STRIPPED_HAWTHORN_WOOD);
+        register("rowan_log", ROWAN_LOG);
+        register("rowan_wood", ROWAN_WOOD);
+        register("stripped_rowan_log", STRIPPED_ROWAN_LOG);
+        register("stripped_rowan_wood", STRIPPED_ROWAN_WOOD);
+
         register("white_stone_altar", WHITE_STONE_ALTAR);
         register("light_gray_stone_altar", LIGHT_GRAY_STONE_ALTAR);
         register("gray_stone_altar", GRAY_STONE_ALTAR);
@@ -50,6 +77,10 @@ public final class WitchesWayBlocks {
 
     public static Block stoneAltar() {
         return new AltarBlock(Properties.ofFullCopy(Blocks.STONE));
+    }
+
+    public static Block log() {
+        return new RotatedPillarBlock(Properties.ofFullCopy(Blocks.OAK_LOG));
     }
 
 }

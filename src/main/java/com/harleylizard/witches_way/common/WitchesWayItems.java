@@ -11,9 +11,22 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 
 public final class WitchesWayItems {
+    public static final Item ALDER_LOG = blockItem(WitchesWayBlocks.ALDER_LOG);
+    public static final Item ALDER_WOOD = blockItem(WitchesWayBlocks.ALDER_WOOD);
+    public static final Item STRIPPED_ALDER_LOG = blockItem(WitchesWayBlocks.STRIPPED_ALDER_LOG);
+    public static final Item STRIPPED_ALDER_WOOD = blockItem(WitchesWayBlocks.STRIPPED_ALDER_WOOD);
+    public static final Item HAWTHORN_LOG = blockItem(WitchesWayBlocks.HAWTHORN_LOG);
+    public static final Item HAWTHORN_WOOD = blockItem(WitchesWayBlocks.HAWTHORN_WOOD);
+    public static final Item STRIPPED_HAWTHORN_LOG = blockItem(WitchesWayBlocks.STRIPPED_HAWTHORN_LOG);
+    public static final Item STRIPPED_HAWTHORN_WOOD = blockItem(WitchesWayBlocks.STRIPPED_HAWTHORN_WOOD);
+    public static final Item ROWAN_LOG = blockItem(WitchesWayBlocks.ROWAN_LOG);
+    public static final Item ROWAN_WOOD = blockItem(WitchesWayBlocks.ROWAN_WOOD);
+    public static final Item STRIPPED_ROWAN_LOG = blockItem(WitchesWayBlocks.STRIPPED_ROWAN_LOG);
+    public static final Item STRIPPED_ROWAN_WOOD = blockItem(WitchesWayBlocks.STRIPPED_ROWAN_WOOD);
+
     public static final Item WHITE_STONE_ALTAR = blockItem(WitchesWayBlocks.WHITE_STONE_ALTAR);
     public static final Item LIGHT_GRAY_STONE_ALTAR = blockItem(WitchesWayBlocks.LIGHT_GRAY_STONE_ALTAR);
-    public static final Item GRAY_STONE_ALTAR = blockItem(WitchesWayBlocks.GREEN_STONE_ALTAR);
+    public static final Item GRAY_STONE_ALTAR = blockItem(WitchesWayBlocks.GRAY_STONE_ALTAR);
     public static final Item BLACK_STONE_ALTAR = blockItem(WitchesWayBlocks.BLACK_STONE_ALTAR);
     public static final Item BROWN_STONE_ALTAR = blockItem(WitchesWayBlocks.BROWN_STONE_ALTAR);
     public static final Item RED_STONE_ALTAR = blockItem(WitchesWayBlocks.RED_STONE_ALTAR);
@@ -29,6 +42,19 @@ public final class WitchesWayItems {
     public static final Item PINK_STONE_ALTAR = blockItem(WitchesWayBlocks.PINK_STONE_ALTAR);
 
     public static final CreativeModeTab CREATIVE_TAB = FabricItemGroup.builder().icon(Items.STICK::getDefaultInstance).displayItems((parameters, output) -> {
+        output.accept(ALDER_LOG);
+        output.accept(ALDER_WOOD);
+        output.accept(STRIPPED_ALDER_LOG);
+        output.accept(STRIPPED_ALDER_WOOD);
+        output.accept(HAWTHORN_LOG);
+        output.accept(HAWTHORN_WOOD);
+        output.accept(STRIPPED_HAWTHORN_LOG);
+        output.accept(STRIPPED_HAWTHORN_WOOD);
+        output.accept(ROWAN_LOG);
+        output.accept(ROWAN_WOOD);
+        output.accept(STRIPPED_ROWAN_LOG);
+        output.accept(STRIPPED_ROWAN_WOOD);
+
         output.accept(WHITE_STONE_ALTAR);
         output.accept(LIGHT_GRAY_STONE_ALTAR);
         output.accept(GRAY_STONE_ALTAR);
@@ -50,6 +76,19 @@ public final class WitchesWayItems {
     }).title(Component.translatable("itemGroup.witches-way")).build();
 
     public static void register() {
+        register("alder_log", ALDER_LOG);
+        register("alder_wood", ALDER_WOOD);
+        register("stripped_alder_log", STRIPPED_ALDER_LOG);
+        register("stripped_alder_wood", STRIPPED_ALDER_WOOD);
+        register("hawthorn_log", HAWTHORN_LOG);
+        register("hawthorn_wood", HAWTHORN_WOOD);
+        register("stripped_hawthorn_log", STRIPPED_HAWTHORN_LOG);
+        register("stripped_hawthorn_wood", STRIPPED_HAWTHORN_WOOD);
+        register("rowan_log", ROWAN_LOG);
+        register("rowan_wood", ROWAN_WOOD);
+        register("stripped_rowan_log", STRIPPED_ROWAN_WOOD);
+        register("stripped_rowan_wood", STRIPPED_ROWAN_LOG);
+
         register("white_stone_altar", WHITE_STONE_ALTAR);
         register("light_gray_stone_altar", LIGHT_GRAY_STONE_ALTAR);
         register("gray_stone_altar", GRAY_STONE_ALTAR);
