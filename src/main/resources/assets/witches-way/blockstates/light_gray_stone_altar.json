@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "clothed=false": {
+      "model": "witches-way:block/light_gray_stone_altar"
+    },
+    "clothed=true": {
+      "model": "witches-way:block/light_gray_stone_altar_clothed"
+    }
+  }
+}

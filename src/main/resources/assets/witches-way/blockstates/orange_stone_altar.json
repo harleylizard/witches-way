@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "clothed=false": {
+      "model": "witches-way:block/orange_stone_altar"
+    },
+    "clothed=true": {
+      "model": "witches-way:block/orange_stone_altar_clothed"
+    }
+  }
+}

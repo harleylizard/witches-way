@@ -36,7 +36,7 @@ public final class WitchesWayBlocks {
         register("yellow_stone_altar", YELLOW_STONE_ALTAR);
         register("lime_stone_altar", LIME_STONE_ALTAR);
         register("green_stone_altar", GREEN_STONE_ALTAR);
-        register("cyan_stone_alter", CYAN_STONE_ALTAR);
+        register("cyan_stone_altar", CYAN_STONE_ALTAR);
         register("light_blue_stone_altar", LIGHT_BLUE_STONE_ALTAR);
         register("blue_stone_altar", BLUE_STONE_ALTAR);
         register("purple_stone_altar", PURPLE_STONE_ALTAR);
