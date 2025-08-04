@@ -18,8 +18,9 @@ public final class Shapes {
     public static Codec<Shape> CODEC = Codec.STRING.dispatch(shape -> Shapes.SHAPES.inverse().get(shape.getCodec()), Shapes.SHAPES::get);
 
     static {
-        SHAPES.put("column", Column.CODEC);
-        SHAPES.put("shape_list", ShapeList.CODEC);
+        SHAPES.put("log", Log.CODEC);
+        SHAPES.put("leaves", Leaves.CODEC);
+        SHAPES.put("list", ShapeList.CODEC);
         SHAPES.put("random_shape_list", RandomShapeList.CODEC);
 
     }

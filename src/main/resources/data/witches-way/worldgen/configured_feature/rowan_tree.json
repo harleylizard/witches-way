@@ -9,10 +9,10 @@
       }
     },
     "shape": {
-      "type": "shape_list",
+      "type": "list",
       "shapes": [
         {
-          "type": "column",
+          "type": "log",
           "block": {
             "type": "minecraft:simple_state_provider",
             "state": {
@@ -22,12 +22,6 @@
           "variable": "height"
         }
       ]
-    },
-    "hanging_leaves": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "witches-way:hanging_alder_leaves"
-      }
     }
   }
 }

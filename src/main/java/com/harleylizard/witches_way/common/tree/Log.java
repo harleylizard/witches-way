@@ -8,8 +8,8 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 
-public record Column(BlockStateProvider block, String variable) implements Shape {
-    public static final MapCodec<Column> CODEC = RecordCodecBuilder.mapCodec(builder -> builder.group(BlockStateProvider.CODEC.fieldOf("block").forGetter(Column::block), Codec.STRING.fieldOf("variable").forGetter(Column::variable)).apply(builder, Column::new));
+public record Log(BlockStateProvider block, String variable) implements Shape {
+    public static final MapCodec<Log> CODEC = RecordCodecBuilder.mapCodec(builder -> builder.group(BlockStateProvider.CODEC.fieldOf("block").forGetter(Log::block), Codec.STRING.fieldOf("variable").forGetter(Log::variable)).apply(builder, Log::new));
 
     @Override
     public BlockPos place(WorldGenLevel level, BlockPos blockPos, RandomSource random, Variables variables) {
@@ -19,7 +19,7 @@ public record Column(BlockStateProvider block, String variable) implements Shape
             Shapes.set(level, blockPos.above(j), block, random);
         }
 
-        return blockPos.above(i);
+        return blockPos.above(i - 1);
     }
 
     @Override

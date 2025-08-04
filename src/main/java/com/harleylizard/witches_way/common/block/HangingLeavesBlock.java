@@ -120,15 +120,15 @@ public final class HangingLeavesBlock extends Block {
         return (i >> toHorizontal(j)) & 3;
     }
 
-    public int toHorizontal(int i) {
+    public static int toHorizontal(int i) {
         return 2 * (i - 2);
     }
 
-    public int getFaces(BlockState blockState) {
+    public static int getFaces(BlockState blockState) {
         return blockState.getValue(FACES);
     }
 
-    public BlockState setFaces(BlockState blockState, int i) {
+    public static BlockState setFaces(BlockState blockState, int i) {
         return blockState.setValue(FACES, i);
     }
 
