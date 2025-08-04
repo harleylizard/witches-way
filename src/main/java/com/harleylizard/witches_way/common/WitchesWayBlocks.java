@@ -104,7 +104,7 @@ public final class WitchesWayBlocks {
     }
 
     public static Block hangingLeaves() {
-        return new HangingLeavesBlock(Properties.of().sound(SoundType.GRASS).noCollission().noOcclusion().randomTicks().replaceable().mapColor(MapColor.GRASS).pushReaction(PushReaction.DESTROY));
+        return new HangingLeavesBlock(Properties.of().sound(SoundType.GRASS).noCollission().noOcclusion().randomTicks().mapColor(MapColor.GRASS).pushReaction(PushReaction.DESTROY));
     }
 
 }

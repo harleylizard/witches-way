@@ -72,7 +72,11 @@ public final class HangingLeavesBlock extends Block {
         var value = 2 << toHorizontal(i);
 
         if (blockState.is(WitchesWayBlockTags.HANGING_LEAVES_CAN_REPLACE)) {
-            level.setBlock(blockPos, setFaces(defaultBlockState(), value), UPDATE_ALL);
+            blockState = setFaces(defaultBlockState(), value);
+
+            if (blockState.canSurvive(level, blockPos)) {
+                level.setBlock(blockPos, blockState, UPDATE_ALL);
+            }
 
         } else if (blockState.is(this)) {
             var faces = getFaces(blockState);
@@ -90,14 +94,18 @@ public final class HangingLeavesBlock extends Block {
         for (var direction : Direction.Plane.HORIZONTAL) {
             var i = direction.ordinal();
 
-            if (stage(faces, i) == 1 && !growsOn(level, blockPos.relative(direction))) {
+            var stage = stage(faces, i);
+            if ((stage == 1 && !growsOn(level, blockPos.relative(direction))) || (stage == 2 && !fullStage(level.getBlockState(blockPos.above()), i))) {
                 faces &= ~(3 << toHorizontal(i));
             }
 
         }
 
         return faces;
+    }
 
+    public boolean fullStage(BlockState blockState, int i) {
+        return blockState.is(this) && stage(getFaces(blockState), i) == 1;
     }
 
     public boolean growsOn(LevelReader level, BlockPos blockPos) {

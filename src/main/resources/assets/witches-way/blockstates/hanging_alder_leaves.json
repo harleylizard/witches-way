@@ -46,6 +46,54 @@
           { "faces": 64 }
         ]
       }
+    },
+
+    {
+      "apply": {
+        "model": "witches-way:block/hanging_alder_leaves_bottom",
+        "y": 180,
+        "uvlock": true
+      },
+      "when": {
+        "OR": [
+          { "faces": 2 }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "witches-way:block/hanging_alder_leaves_bottom",
+        "uvlock": true
+      },
+      "when": {
+        "OR": [
+          { "faces": 8 }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "witches-way:block/hanging_alder_leaves_bottom",
+        "y": 90,
+        "uvlock": true
+      },
+      "when": {
+        "OR": [
+          { "faces": 32 }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "witches-way:block/hanging_alder_leaves_bottom",
+        "y": 270,
+        "uvlock": true
+      },
+      "when": {
+        "OR": [
+          { "faces": 128 }
+        ]
+      }
     }
   ]
 }
