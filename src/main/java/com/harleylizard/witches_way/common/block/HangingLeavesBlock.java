@@ -113,7 +113,7 @@ public final class HangingLeavesBlock extends Block {
     }
 
     public boolean growsOn(BlockGetter getter, BlockPos blockPos, BlockState blockState) {
-        return blockState.is(WitchesWayBlockTags.HANGING_LEAVES_CAN_STAY_ON) && blockState.isCollisionShapeFullBlock(getter, blockPos);
+        return blockState.is(WitchesWayBlockTags.HANGING_LEAVES_CAN_HANG_ON) && blockState.isCollisionShapeFullBlock(getter, blockPos);
     }
 
     public int stage(int i, int j) {

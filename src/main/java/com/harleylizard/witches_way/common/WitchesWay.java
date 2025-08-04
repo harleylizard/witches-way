@@ -12,6 +12,7 @@ public final class WitchesWay implements ModInitializer {
         WitchesWayItems.register();
 
         WitchesWayBlockEntities.register();
+        WitchesWayFeatures.register();
 
     }
 
