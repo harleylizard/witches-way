@@ -3,6 +3,10 @@ package com.harleylizard.witches_way.common.tree;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 
 import java.util.List;
 
@@ -11,6 +15,11 @@ public record RandomShapeList(List<Entry> entries) implements Shape {
 
         return builder.group(Entry.CODEC.listOf().fieldOf("entries").forGetter(RandomShapeList::entries)).apply(builder, RandomShapeList::new);
     });
+
+    @Override
+    public void place(WorldGenLevel level, BlockPos blockPos, BlockStateProvider block, RandomSource random) {
+
+    }
 
     @Override
     public MapCodec<? extends Shape> getCodec() {
