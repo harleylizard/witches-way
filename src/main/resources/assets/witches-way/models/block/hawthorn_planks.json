@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "witches-way:block/hawthorn_planks"
+  }
+}

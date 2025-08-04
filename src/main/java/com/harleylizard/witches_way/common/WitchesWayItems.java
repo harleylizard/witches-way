@@ -15,14 +15,17 @@ public final class WitchesWayItems {
     public static final Item ALDER_WOOD = blockItem(WitchesWayBlocks.ALDER_WOOD);
     public static final Item STRIPPED_ALDER_LOG = blockItem(WitchesWayBlocks.STRIPPED_ALDER_LOG);
     public static final Item STRIPPED_ALDER_WOOD = blockItem(WitchesWayBlocks.STRIPPED_ALDER_WOOD);
+    public static final Item ALDER_PLANKS = blockItem(WitchesWayBlocks.ALDER_PLANKS);
     public static final Item HAWTHORN_LOG = blockItem(WitchesWayBlocks.HAWTHORN_LOG);
     public static final Item HAWTHORN_WOOD = blockItem(WitchesWayBlocks.HAWTHORN_WOOD);
     public static final Item STRIPPED_HAWTHORN_LOG = blockItem(WitchesWayBlocks.STRIPPED_HAWTHORN_LOG);
     public static final Item STRIPPED_HAWTHORN_WOOD = blockItem(WitchesWayBlocks.STRIPPED_HAWTHORN_WOOD);
+    public static final Item HAWTHORN_PLANKS = blockItem(WitchesWayBlocks.HAWTHORN_PLANKS);
     public static final Item ROWAN_LOG = blockItem(WitchesWayBlocks.ROWAN_LOG);
     public static final Item ROWAN_WOOD = blockItem(WitchesWayBlocks.ROWAN_WOOD);
     public static final Item STRIPPED_ROWAN_LOG = blockItem(WitchesWayBlocks.STRIPPED_ROWAN_LOG);
     public static final Item STRIPPED_ROWAN_WOOD = blockItem(WitchesWayBlocks.STRIPPED_ROWAN_WOOD);
+    public static final Item ROWAN_PLANKS = blockItem(WitchesWayBlocks.ROWAN_PLANKS);
 
     public static final Item WHITE_STONE_ALTAR = blockItem(WitchesWayBlocks.WHITE_STONE_ALTAR);
     public static final Item LIGHT_GRAY_STONE_ALTAR = blockItem(WitchesWayBlocks.LIGHT_GRAY_STONE_ALTAR);
@@ -46,14 +49,17 @@ public final class WitchesWayItems {
         output.accept(ALDER_WOOD);
         output.accept(STRIPPED_ALDER_LOG);
         output.accept(STRIPPED_ALDER_WOOD);
+        output.accept(ALDER_PLANKS);
         output.accept(HAWTHORN_LOG);
         output.accept(HAWTHORN_WOOD);
         output.accept(STRIPPED_HAWTHORN_LOG);
         output.accept(STRIPPED_HAWTHORN_WOOD);
+        output.accept(HAWTHORN_PLANKS);
         output.accept(ROWAN_LOG);
         output.accept(ROWAN_WOOD);
         output.accept(STRIPPED_ROWAN_LOG);
         output.accept(STRIPPED_ROWAN_WOOD);
+        output.accept(ROWAN_PLANKS);
 
         output.accept(WHITE_STONE_ALTAR);
         output.accept(LIGHT_GRAY_STONE_ALTAR);
@@ -80,14 +86,17 @@ public final class WitchesWayItems {
         register("alder_wood", ALDER_WOOD);
         register("stripped_alder_log", STRIPPED_ALDER_LOG);
         register("stripped_alder_wood", STRIPPED_ALDER_WOOD);
+        register("alder_planks", ALDER_PLANKS);
         register("hawthorn_log", HAWTHORN_LOG);
         register("hawthorn_wood", HAWTHORN_WOOD);
         register("stripped_hawthorn_log", STRIPPED_HAWTHORN_LOG);
         register("stripped_hawthorn_wood", STRIPPED_HAWTHORN_WOOD);
+        register("hawthorn_planks", HAWTHORN_PLANKS);
         register("rowan_log", ROWAN_LOG);
         register("rowan_wood", ROWAN_WOOD);
         register("stripped_rowan_log", STRIPPED_ROWAN_WOOD);
         register("stripped_rowan_wood", STRIPPED_ROWAN_LOG);
+        register("rowan_planks", ROWAN_PLANKS);
 
         register("white_stone_altar", WHITE_STONE_ALTAR);
         register("light_gray_stone_altar", LIGHT_GRAY_STONE_ALTAR);

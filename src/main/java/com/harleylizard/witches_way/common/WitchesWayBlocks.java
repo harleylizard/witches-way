@@ -13,14 +13,17 @@ public final class WitchesWayBlocks {
     public static final Block ALDER_WOOD = log();
     public static final Block STRIPPED_ALDER_LOG = log();
     public static final Block STRIPPED_ALDER_WOOD = log();
+    public static final Block ALDER_PLANKS = planks();
     public static final Block HAWTHORN_LOG = log();
     public static final Block HAWTHORN_WOOD = log();
     public static final Block STRIPPED_HAWTHORN_LOG = log();
     public static final Block STRIPPED_HAWTHORN_WOOD = log();
+    public static final Block HAWTHORN_PLANKS = planks();
     public static final Block ROWAN_LOG = log();
     public static final Block ROWAN_WOOD = log();
     public static final Block STRIPPED_ROWAN_LOG = log();
     public static final Block STRIPPED_ROWAN_WOOD = log();
+    public static final Block ROWAN_PLANKS = planks();
 
     public static final Block WHITE_STONE_ALTAR = stoneAltar();
     public static final Block LIGHT_GRAY_STONE_ALTAR = stoneAltar();
@@ -44,14 +47,17 @@ public final class WitchesWayBlocks {
         register("alder_wood", ALDER_WOOD);
         register("stripped_alder_log", STRIPPED_ALDER_LOG);
         register("stripped_alder_wood", STRIPPED_ALDER_WOOD);
+        register("alder_planks", ALDER_PLANKS);
         register("hawthorn_log", HAWTHORN_LOG);
         register("hawthorn_wood", HAWTHORN_WOOD);
         register("stripped_hawthorn_log", STRIPPED_HAWTHORN_LOG);
         register("stripped_hawthorn_wood", STRIPPED_HAWTHORN_WOOD);
+        register("hawthorn_planks", HAWTHORN_PLANKS);
         register("rowan_log", ROWAN_LOG);
         register("rowan_wood", ROWAN_WOOD);
         register("stripped_rowan_log", STRIPPED_ROWAN_LOG);
         register("stripped_rowan_wood", STRIPPED_ROWAN_WOOD);
+        register("rowan_planks", ROWAN_PLANKS);
 
         register("white_stone_altar", WHITE_STONE_ALTAR);
         register("light_gray_stone_altar", LIGHT_GRAY_STONE_ALTAR);
@@ -81,6 +87,10 @@ public final class WitchesWayBlocks {
 
     public static Block log() {
         return new RotatedPillarBlock(Properties.ofFullCopy(Blocks.OAK_LOG));
+    }
+
+    public static Block planks() {
+        return new Block(Properties.ofFullCopy(Blocks.OAK_PLANKS));
     }
 
 }
