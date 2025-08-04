@@ -17,18 +17,23 @@ public final class WitchesWayItems {
     public static final Item STRIPPED_ALDER_WOOD = blockItem(WitchesWayBlocks.STRIPPED_ALDER_WOOD);
     public static final Item ALDER_PLANKS = blockItem(WitchesWayBlocks.ALDER_PLANKS);
     public static final Item HANGING_ALDER_LEAVES = blockItem(WitchesWayBlocks.HANGING_ALDER_LEAVES);
+    public static final Item ALDER_SAPLING = blockItem(WitchesWayBlocks.ALDER_SAPLING);
+
     public static final Item HAWTHORN_LOG = blockItem(WitchesWayBlocks.HAWTHORN_LOG);
     public static final Item HAWTHORN_WOOD = blockItem(WitchesWayBlocks.HAWTHORN_WOOD);
     public static final Item STRIPPED_HAWTHORN_LOG = blockItem(WitchesWayBlocks.STRIPPED_HAWTHORN_LOG);
     public static final Item STRIPPED_HAWTHORN_WOOD = blockItem(WitchesWayBlocks.STRIPPED_HAWTHORN_WOOD);
     public static final Item HAWTHORN_PLANKS = blockItem(WitchesWayBlocks.HAWTHORN_PLANKS);
     public static final Item HANGING_HAWTHORN_LEAVES = blockItem(WitchesWayBlocks.HANGING_HAWTHORN_LEAVES);
+    public static final Item HAWTHORN_SAPLING = blockItem(WitchesWayBlocks.HAWTHORN_SAPLING);
+
     public static final Item ROWAN_LOG = blockItem(WitchesWayBlocks.ROWAN_LOG);
     public static final Item ROWAN_WOOD = blockItem(WitchesWayBlocks.ROWAN_WOOD);
     public static final Item STRIPPED_ROWAN_LOG = blockItem(WitchesWayBlocks.STRIPPED_ROWAN_LOG);
     public static final Item STRIPPED_ROWAN_WOOD = blockItem(WitchesWayBlocks.STRIPPED_ROWAN_WOOD);
     public static final Item ROWAN_PLANKS = blockItem(WitchesWayBlocks.ROWAN_PLANKS);
     public static final Item HANGING_ROWAN_LEAVES = blockItem(WitchesWayBlocks.HANGING_ROWAN_LEAVES);
+    public static final Item ROWAN_SAPLING = blockItem(WitchesWayBlocks.ROWAN_SAPLING);
 
     public static final Item WHITE_STONE_ALTAR = blockItem(WitchesWayBlocks.WHITE_STONE_ALTAR);
     public static final Item LIGHT_GRAY_STONE_ALTAR = blockItem(WitchesWayBlocks.LIGHT_GRAY_STONE_ALTAR);
@@ -54,18 +59,23 @@ public final class WitchesWayItems {
         output.accept(STRIPPED_ALDER_WOOD);
         output.accept(ALDER_PLANKS);
         output.accept(HANGING_ALDER_LEAVES);
+        output.accept(ALDER_SAPLING);
+
         output.accept(HAWTHORN_LOG);
         output.accept(HAWTHORN_WOOD);
         output.accept(STRIPPED_HAWTHORN_LOG);
         output.accept(STRIPPED_HAWTHORN_WOOD);
         output.accept(HAWTHORN_PLANKS);
         output.accept(HANGING_HAWTHORN_LEAVES);
+        output.accept(HAWTHORN_SAPLING);
+
         output.accept(ROWAN_LOG);
         output.accept(ROWAN_WOOD);
         output.accept(STRIPPED_ROWAN_LOG);
         output.accept(STRIPPED_ROWAN_WOOD);
         output.accept(ROWAN_PLANKS);
         output.accept(HANGING_ROWAN_LEAVES);
+        output.accept(ROWAN_SAPLING);
 
         output.accept(WHITE_STONE_ALTAR);
         output.accept(LIGHT_GRAY_STONE_ALTAR);
@@ -94,18 +104,23 @@ public final class WitchesWayItems {
         register("stripped_alder_wood", STRIPPED_ALDER_WOOD);
         register("alder_planks", ALDER_PLANKS);
         register("hanging_alder_leaves", HANGING_ALDER_LEAVES);
+        register("alder_sapling", ALDER_SAPLING);
+
         register("hawthorn_log", HAWTHORN_LOG);
         register("hawthorn_wood", HAWTHORN_WOOD);
         register("stripped_hawthorn_log", STRIPPED_HAWTHORN_LOG);
         register("stripped_hawthorn_wood", STRIPPED_HAWTHORN_WOOD);
         register("hawthorn_planks", HAWTHORN_PLANKS);
         register("hanging_hawthorn_leaves", HANGING_HAWTHORN_LEAVES);
+        register("hawthorn_sapling", HAWTHORN_SAPLING);
+
         register("rowan_log", ROWAN_LOG);
         register("rowan_wood", ROWAN_WOOD);
         register("stripped_rowan_log", STRIPPED_ROWAN_WOOD);
         register("stripped_rowan_wood", STRIPPED_ROWAN_LOG);
         register("rowan_planks", ROWAN_PLANKS);
         register("hanging_rowan_leaves", HANGING_ROWAN_LEAVES);
+        register("rowan_sapling", ROWAN_SAPLING);
 
         register("white_stone_altar", WHITE_STONE_ALTAR);
         register("light_gray_stone_altar", LIGHT_GRAY_STONE_ALTAR);

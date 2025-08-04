@@ -16,8 +16,13 @@ public final class WitchesWayClient implements ClientModInitializer {
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutoutMipped(),
                 WitchesWayBlocks.HANGING_ALDER_LEAVES,
+                WitchesWayBlocks.ALDER_SAPLING,
+
                 WitchesWayBlocks.HANGING_HAWTHORN_LEAVES,
-                WitchesWayBlocks.HANGING_ROWAN_LEAVES
+                WitchesWayBlocks.HAWTHORN_SAPLING,
+
+                WitchesWayBlocks.HANGING_ROWAN_LEAVES,
+                WitchesWayBlocks.ROWAN_SAPLING
                 );
 
         var alderLeaves = 0x499B51;

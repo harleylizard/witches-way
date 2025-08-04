@@ -1,4 +1,31 @@
 {
-  "type": "witches-way:hawthorn_tree",
-  "config": {}
+  "type": "witches-way:tree",
+  "config": {
+    "height": {
+      "from": 4,
+      "to": {
+        "type": "minecraft:biased_to_bottom",
+        "max_inclusive": 2,
+        "min_inclusive": 0
+      }
+    },
+    "log": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "witches-way:hawthorn_log"
+      }
+    },
+    "leaves": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "witches-way:alder_log"
+      }
+    },
+    "hanging_leaves": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "witches-way:hanging_hawthorn_leaves"
+      }
+    }
+  }
 }
