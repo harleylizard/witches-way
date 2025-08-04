@@ -1,0 +1,51 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "witches-way:block/hanging_alder_leaves",
+        "y": 180,
+        "uvlock": true
+      },
+      "when": {
+        "OR": [
+          { "faces": 1 }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "witches-way:block/hanging_alder_leaves",
+        "uvlock": true
+      },
+      "when": {
+        "OR": [
+          { "faces": 4 }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "witches-way:block/hanging_alder_leaves",
+        "y": 90,
+        "uvlock": true
+      },
+      "when": {
+        "OR": [
+          { "faces": 16 }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "witches-way:block/hanging_alder_leaves",
+        "y": 270,
+        "uvlock": true
+      },
+      "when": {
+        "OR": [
+          { "faces": 64 }
+        ]
+      }
+    }
+  ]
+}

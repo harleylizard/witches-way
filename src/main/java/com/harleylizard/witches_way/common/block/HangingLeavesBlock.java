@@ -6,8 +6,12 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
@@ -23,6 +27,18 @@ public final class HangingLeavesBlock extends Block {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACES);
+    }
+
+    @Override
+    protected boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
+        return subtracted(levelReader, blockPos, blockState) > 0;
+    }
+
+    @Override
+    protected BlockState updateShape(BlockState blockState, Direction direction, BlockState blockState2, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos blockPos2) {
+        var faces = subtracted(levelAccessor, blockPos, blockState);
+
+        return faces == 0 ? Blocks.AIR.defaultBlockState() : blockState.setValue(FACES, faces);
     }
 
     @Override
@@ -66,6 +82,30 @@ public final class HangingLeavesBlock extends Block {
             }
 
         }
+    }
+
+    public int subtracted(LevelReader level, BlockPos blockPos, BlockState blockState) {
+        var faces = getFaces(blockState);
+
+        for (var direction : Direction.Plane.HORIZONTAL) {
+            var i = direction.ordinal();
+
+            if (stage(faces, i) == 1 && !growsOn(level, blockPos.relative(direction))) {
+                faces &= ~(3 << toHorizontal(i));
+            }
+
+        }
+
+        return faces;
+
+    }
+
+    public boolean growsOn(LevelReader level, BlockPos blockPos) {
+        return growsOn(level, blockPos, level.getBlockState(blockPos));
+    }
+
+    public boolean growsOn(BlockGetter getter, BlockPos blockPos, BlockState blockState) {
+        return blockState.is(WitchesWayBlockTags.HANGING_LEAVES_CAN_STAY_ON) && blockState.isCollisionShapeFullBlock(getter, blockPos);
     }
 
     public int stage(int i, int j) {
