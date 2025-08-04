@@ -6,19 +6,15 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 
 import java.util.List;
 
 public record RandomShapeList(List<Entry> entries) implements Shape {
-    public static final MapCodec<RandomShapeList> CODEC = RecordCodecBuilder.mapCodec(builder -> {
-
-        return builder.group(Entry.CODEC.listOf().fieldOf("entries").forGetter(RandomShapeList::entries)).apply(builder, RandomShapeList::new);
-    });
+    public static final MapCodec<RandomShapeList> CODEC = RecordCodecBuilder.mapCodec(builder -> builder.group(Entry.CODEC.listOf().fieldOf("entries").forGetter(RandomShapeList::entries)).apply(builder, RandomShapeList::new));
 
     @Override
-    public void place(WorldGenLevel level, BlockPos blockPos, BlockStateProvider block, RandomSource random) {
-
+    public BlockPos place(WorldGenLevel level, BlockPos blockPos, RandomSource random, Variables variables) {
+        return blockPos;
     }
 
     @Override
@@ -27,13 +23,7 @@ public record RandomShapeList(List<Entry> entries) implements Shape {
     }
 
     public record Entry(Shape shape, int weight) {
-        public static final Codec<Entry> CODEC = RecordCodecBuilder.create(builder -> {
-
-            return builder.group(
-                    Shapes.CODEC.fieldOf("shape").forGetter(Entry::shape),
-                    Codec.INT.fieldOf("weight").forGetter(Entry::weight)
-            ).apply(builder, Entry::new);
-        });
+        public static final Codec<Entry> CODEC = RecordCodecBuilder.create(builder -> builder.group(Shapes.CODEC.fieldOf("shape").forGetter(Entry::shape), Codec.INT.fieldOf("weight").forGetter(Entry::weight)).apply(builder, Entry::new));
 
     }
 

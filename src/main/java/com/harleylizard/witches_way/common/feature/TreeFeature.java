@@ -18,7 +18,7 @@ public final class TreeFeature extends Feature<TreeFeatureConfiguration> {
         var level = featurePlaceContext.level();
         var blockPos = featurePlaceContext.origin();
 
-        config.log().place(level, blockPos, random);
+        config.shape().place(level, blockPos, random, config.variables());
 
         return true;
     }

@@ -16,6 +16,7 @@ public final class WitchesWayItems {
     public static final Item STRIPPED_ALDER_LOG = blockItem(WitchesWayBlocks.STRIPPED_ALDER_LOG);
     public static final Item STRIPPED_ALDER_WOOD = blockItem(WitchesWayBlocks.STRIPPED_ALDER_WOOD);
     public static final Item ALDER_PLANKS = blockItem(WitchesWayBlocks.ALDER_PLANKS);
+    public static final Item ALDER_LEAVES = blockItem(WitchesWayBlocks.ALDER_LEAVES);
     public static final Item HANGING_ALDER_LEAVES = blockItem(WitchesWayBlocks.HANGING_ALDER_LEAVES);
     public static final Item ALDER_SAPLING = blockItem(WitchesWayBlocks.ALDER_SAPLING);
 
@@ -24,6 +25,7 @@ public final class WitchesWayItems {
     public static final Item STRIPPED_HAWTHORN_LOG = blockItem(WitchesWayBlocks.STRIPPED_HAWTHORN_LOG);
     public static final Item STRIPPED_HAWTHORN_WOOD = blockItem(WitchesWayBlocks.STRIPPED_HAWTHORN_WOOD);
     public static final Item HAWTHORN_PLANKS = blockItem(WitchesWayBlocks.HAWTHORN_PLANKS);
+    public static final Item HAWTHORN_LEAVES = blockItem(WitchesWayBlocks.HAWTHORN_LEAVES);
     public static final Item HANGING_HAWTHORN_LEAVES = blockItem(WitchesWayBlocks.HANGING_HAWTHORN_LEAVES);
     public static final Item HAWTHORN_SAPLING = blockItem(WitchesWayBlocks.HAWTHORN_SAPLING);
 
@@ -32,6 +34,7 @@ public final class WitchesWayItems {
     public static final Item STRIPPED_ROWAN_LOG = blockItem(WitchesWayBlocks.STRIPPED_ROWAN_LOG);
     public static final Item STRIPPED_ROWAN_WOOD = blockItem(WitchesWayBlocks.STRIPPED_ROWAN_WOOD);
     public static final Item ROWAN_PLANKS = blockItem(WitchesWayBlocks.ROWAN_PLANKS);
+    public static final Item ROWAN_LEAVES = blockItem(WitchesWayBlocks.ROWAN_LEAVES);
     public static final Item HANGING_ROWAN_LEAVES = blockItem(WitchesWayBlocks.HANGING_ROWAN_LEAVES);
     public static final Item ROWAN_SAPLING = blockItem(WitchesWayBlocks.ROWAN_SAPLING);
 
@@ -58,22 +61,28 @@ public final class WitchesWayItems {
         output.accept(STRIPPED_ALDER_LOG);
         output.accept(STRIPPED_ALDER_WOOD);
         output.accept(ALDER_PLANKS);
-        output.accept(HANGING_ALDER_LEAVES);
-        output.accept(ALDER_SAPLING);
 
         output.accept(HAWTHORN_LOG);
         output.accept(HAWTHORN_WOOD);
         output.accept(STRIPPED_HAWTHORN_LOG);
         output.accept(STRIPPED_HAWTHORN_WOOD);
         output.accept(HAWTHORN_PLANKS);
-        output.accept(HANGING_HAWTHORN_LEAVES);
-        output.accept(HAWTHORN_SAPLING);
 
         output.accept(ROWAN_LOG);
         output.accept(ROWAN_WOOD);
         output.accept(STRIPPED_ROWAN_LOG);
         output.accept(STRIPPED_ROWAN_WOOD);
         output.accept(ROWAN_PLANKS);
+
+        output.accept(ALDER_LEAVES);
+        output.accept(HANGING_ALDER_LEAVES);
+        output.accept(ALDER_SAPLING);
+
+        output.accept(HAWTHORN_LEAVES);
+        output.accept(HANGING_HAWTHORN_LEAVES);
+        output.accept(HAWTHORN_SAPLING);
+
+        output.accept(ROWAN_LEAVES);
         output.accept(HANGING_ROWAN_LEAVES);
         output.accept(ROWAN_SAPLING);
 
@@ -94,7 +103,6 @@ public final class WitchesWayItems {
         output.accept(MAGENTA_STONE_ALTAR);
         output.accept(PINK_STONE_ALTAR);
 
-
     }).title(Component.translatable("itemGroup.witches-way")).build();
 
     public static void register() {
@@ -103,6 +111,7 @@ public final class WitchesWayItems {
         register("stripped_alder_log", STRIPPED_ALDER_LOG);
         register("stripped_alder_wood", STRIPPED_ALDER_WOOD);
         register("alder_planks", ALDER_PLANKS);
+        register("alder_leaves", ALDER_LEAVES);
         register("hanging_alder_leaves", HANGING_ALDER_LEAVES);
         register("alder_sapling", ALDER_SAPLING);
 
@@ -111,6 +120,7 @@ public final class WitchesWayItems {
         register("stripped_hawthorn_log", STRIPPED_HAWTHORN_LOG);
         register("stripped_hawthorn_wood", STRIPPED_HAWTHORN_WOOD);
         register("hawthorn_planks", HAWTHORN_PLANKS);
+        register("hawthorn_leaves", HAWTHORN_LEAVES);
         register("hanging_hawthorn_leaves", HANGING_HAWTHORN_LEAVES);
         register("hawthorn_sapling", HAWTHORN_SAPLING);
 
@@ -119,6 +129,7 @@ public final class WitchesWayItems {
         register("stripped_rowan_log", STRIPPED_ROWAN_WOOD);
         register("stripped_rowan_wood", STRIPPED_ROWAN_LOG);
         register("rowan_planks", ROWAN_PLANKS);
+        register("rowan_leaves", ROWAN_LEAVES);
         register("hanging_rowan_leaves", HANGING_ROWAN_LEAVES);
         register("rowan_sapling", ROWAN_SAPLING);
 

@@ -1,45 +1,27 @@
 {
   "type": "witches-way:tree",
   "config": {
-    "log": {
-      "block": {
-        "type": "minecraft:simple_state_provider",
-        "state": {
-          "Name": "witches-way:alder_log"
-        }
-      },
-      "shape": {
-        "type": "column",
-        "from": {
-          "type": "minecraft:constant",
-          "value": 4
-        },
-        "to": {
-          "type": "minecraft:biased_to_bottom",
-          "max_inclusive": 2,
-          "min_inclusive": 0
-        }
+    "variables": {
+      "height": {
+        "type": "minecraft:biased_to_bottom",
+        "min_inclusive": 4,
+        "max_inclusive": 6
       }
     },
-    "leaves": {
-      "block": {
-        "type": "minecraft:simple_state_provider",
-        "state": {
-          "Name": "witches-way:alder_log"
+    "shape": {
+      "type": "shape_list",
+      "shapes": [
+        {
+          "type": "column",
+          "block": {
+            "type": "minecraft:simple_state_provider",
+            "state": {
+              "Name": "witches-way:alder_log"
+            }
+          },
+          "variable": "height"
         }
-      },
-      "shape": {
-        "type": "column",
-        "from": {
-          "type": "minecraft:constant",
-          "value": 4
-        },
-        "to": {
-          "type": "minecraft:biased_to_bottom",
-          "max_inclusive": 2,
-          "min_inclusive": 0
-        }
-      }
+      ]
     },
     "hanging_leaves": {
       "type": "minecraft:simple_state_provider",
