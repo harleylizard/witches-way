@@ -6,7 +6,7 @@
       "y": 90
     },
     "axis=y": {
-      "model": "witches-way:block/rowan_log"
+      "model": "witches-way:block/stripped_rowan_log"
     },
     "axis=z": {
       "model": "witches-way:block/stripped_rowan_log_horizontal",

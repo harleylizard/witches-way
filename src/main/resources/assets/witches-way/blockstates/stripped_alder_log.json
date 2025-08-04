@@ -6,7 +6,7 @@
       "y": 90
     },
     "axis=y": {
-      "model": "witches-way:block/alder_log"
+      "model": "witches-way:block/stripped_alder_log"
     },
     "axis=z": {
       "model": "witches-way:block/stripped_alder_log_horizontal",

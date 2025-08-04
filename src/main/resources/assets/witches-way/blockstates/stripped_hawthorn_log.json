@@ -6,7 +6,7 @@
       "y": 90
     },
     "axis=y": {
-      "model": "witches-way:block/hawthorn_log"
+      "model": "witches-way:block/stripped_hawthorn_log"
     },
     "axis=z": {
       "model": "witches-way:block/stripped_hawthorn_log_horizontal",
