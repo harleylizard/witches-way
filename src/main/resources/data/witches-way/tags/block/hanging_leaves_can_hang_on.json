@@ -1,5 +1,6 @@
 {
   "values": [
-    "#minecraft:leaves"
+    "#minecraft:leaves",
+    "#minecraft:logs_that_burn"
   ]
 }
