@@ -1,4 +1,9 @@
 package com.harleylizard.witches_way.common.tree;
 
-public sealed interface Shape permits RandomShapeList, ShapeList {
+import com.mojang.serialization.MapCodec;
+
+public sealed interface Shape permits Column, RandomShapeList, ShapeList {
+
+    MapCodec<? extends Shape> getCodec();
+
 }
