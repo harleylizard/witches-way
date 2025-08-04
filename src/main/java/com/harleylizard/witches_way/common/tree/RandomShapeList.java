@@ -13,7 +13,7 @@ public record RandomShapeList(List<Entry> entries) implements Shape {
     public static final MapCodec<RandomShapeList> CODEC = RecordCodecBuilder.mapCodec(builder -> builder.group(Entry.CODEC.listOf().fieldOf("entries").forGetter(RandomShapeList::entries)).apply(builder, RandomShapeList::new));
 
     @Override
-    public BlockPos place(WorldGenLevel level, BlockPos blockPos, RandomSource random, Variables variables) {
+    public BlockPos place(WorldGenLevel level, BlockPos blockPos, RandomSource random, BlockStates blocks) {
         return blockPos;
     }
 

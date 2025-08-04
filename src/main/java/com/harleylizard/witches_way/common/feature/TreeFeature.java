@@ -13,12 +13,7 @@ public final class TreeFeature extends Feature<TreeFeatureConfiguration> {
     public boolean place(FeaturePlaceContext<TreeFeatureConfiguration> featurePlaceContext) {
         var config = featurePlaceContext.config();
 
-        var random = featurePlaceContext.random();
-
-        var level = featurePlaceContext.level();
-        var blockPos = featurePlaceContext.origin();
-
-        config.shape().place(level, blockPos, random, config.variables());
+        config.shape().place(featurePlaceContext.level(), featurePlaceContext.origin(), featurePlaceContext.random(), config.blocks());
 
         return true;
     }

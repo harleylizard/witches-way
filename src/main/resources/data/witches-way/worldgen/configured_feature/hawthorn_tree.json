@@ -1,25 +1,44 @@
 {
   "type": "witches-way:tree",
   "config": {
-    "variables": {
-      "height": {
-        "type": "minecraft:biased_to_bottom",
-        "min_inclusive": 4,
-        "max_inclusive": 6
+    "blocks": {
+      "log": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "witches-way:hawthorn_log"
+        }
+      },
+      "leaves": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "witches-way:hawthorn_leaves"
+        }
+      },
+      "hanging_leaves": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "witches-way:hanging_hawthorn_leaves"
+        }
       }
     },
     "shape": {
       "type": "list",
       "shapes": [
         {
-          "type": "log",
-          "block": {
-            "type": "minecraft:simple_state_provider",
-            "state": {
-              "Name": "witches-way:hawthorn_log"
-            }
-          },
-          "variable": "height"
+          "type": "column",
+          "block": "log",
+          "tallness": {
+            "type": "minecraft:biased_to_bottom",
+            "min_inclusive": 3,
+            "max_inclusive": 4
+          }
+        },
+        {
+          "type": "leaves",
+          "leaves": "leaves",
+          "hanging_leaves": "hanging_leaves",
+          "wideness": 3,
+          "tallness": 2
         }
       ]
     }

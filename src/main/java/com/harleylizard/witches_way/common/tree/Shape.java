@@ -5,9 +5,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 
-public sealed interface Shape permits Leaves, Log, RandomShapeList, ShapeList {
+public sealed interface Shape permits Leaves, Column, RandomShapeList, ShapeList {
 
-    BlockPos place(WorldGenLevel level, BlockPos blockPos, RandomSource random, Variables variables);
+    BlockPos place(WorldGenLevel level, BlockPos blockPos, RandomSource random, BlockStates blocks);
 
     MapCodec<? extends Shape> getCodec();
 

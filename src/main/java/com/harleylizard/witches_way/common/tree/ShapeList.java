@@ -12,9 +12,9 @@ public record ShapeList(List<Shape> shapes) implements Shape {
     public static final MapCodec<ShapeList> CODEC = RecordCodecBuilder.mapCodec(builder -> builder.group(Shapes.CODEC.listOf().fieldOf("shapes").forGetter(ShapeList::shapes)).apply(builder, ShapeList::new));
 
     @Override
-    public BlockPos place(WorldGenLevel level, BlockPos blockPos, RandomSource random, Variables variables) {
+    public BlockPos place(WorldGenLevel level, BlockPos blockPos, RandomSource random, BlockStates blocks) {
         for (var shape : shapes) {
-            blockPos = shape.place(level, blockPos, random, variables);
+            blockPos = shape.place(level, blockPos, random, blocks);
         }
 
         return blockPos;
