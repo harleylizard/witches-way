@@ -7,10 +7,13 @@ import net.minecraft.world.item.ItemStack;
 import java.util.List;
 
 public record Recipe(List<Ingredient> ingredients, Ingredient result) {
+    public static final Recipe EMPTY = new Recipe(List.of(), Ingredient.EMPTY);
+
     public static final Codec<Recipe> CODEC = RecordCodecBuilder.create(builder -> builder.group(Ingredient.CODEC.listOf().fieldOf("ingredients").forGetter(Recipe::ingredients), Ingredient.CODEC.fieldOf("result").forGetter(Recipe::result)).apply(builder, Recipe::new));
 
-    public void compare(List<ItemStack> items) {
+    public boolean compare(List<ItemStack> items) {
 
+        return false;
     }
 
     public List<ItemStack> consume(List<ItemStack> items) {
