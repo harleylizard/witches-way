@@ -24,24 +24,28 @@ public record Leaves(String leaves, String hangingLeaves, int wideness, int tall
     public BlockPos place(WorldGenLevel level, BlockPos blockPos, RandomSource random, BlockStates blocks) {
         Set<BlockPos> set = new HashSet<>();
 
-        var k = wideness + 1;
+        var k = wideness - 1;
         for (var i = -k; i <= k; i++) {
-            for (var j = -k; j <= k; j++) {
-                var relative = blockPos.offset(i, 0, j);
+            for (var m = 0; m <= tallness; m++) {
+                for (var j = -k; j <= k; j++) {
+                    var relative = blockPos.offset(i, m, j);
 
-                var x = relative.getX() - blockPos.getX();
-                var z = relative.getZ() - blockPos.getZ();
+                    var x = relative.getX() - blockPos.getX();
+                    var y = (relative.getY() - blockPos.getY()) * 0.5f;
+                    var z = relative.getZ() - blockPos.getZ();
 
-                var distance = Math.sqrt((x * x + z * z)) * 2.25;
-                var radius = wideness * wideness;
+                    var distance = Math.sqrt((x * x + y * y + z * z)) * ((float) wideness);
 
-                if (distance < radius - 1 ) {
-                    Shapes.set(level, relative, blocks.get(leaves), random);
+                    var radius = wideness * wideness;
 
-                    level.scheduleTick(blockPos, level.getBlockState(relative).getBlock(), 1, TickPriority.LOW);
-                    set.add(relative);
+                    if (distance < radius - 1 ) {
+                        Shapes.set(level, relative, blocks.get(leaves), random);
+
+                        level.scheduleTick(blockPos, level.getBlockState(relative).getBlock(), 1, TickPriority.LOW);
+                        set.add(relative);
+                    }
+
                 }
-
             }
         }
 
