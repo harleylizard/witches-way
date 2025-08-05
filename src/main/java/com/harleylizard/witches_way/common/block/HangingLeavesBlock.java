@@ -19,7 +19,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public final class HangingLeavesBlock extends ShapeBlock {
+public sealed class HangingLeavesBlock extends ShapeBlock permits SpanishMossBlock {
     public static final IntegerProperty FACES = IntegerProperty.create("faces", 0, 256);
 
     public HangingLeavesBlock(Properties properties) {

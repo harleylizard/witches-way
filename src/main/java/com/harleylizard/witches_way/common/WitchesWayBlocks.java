@@ -2,6 +2,7 @@ package com.harleylizard.witches_way.common;
 
 import com.harleylizard.witches_way.common.block.AltarBlock;
 import com.harleylizard.witches_way.common.block.HangingLeavesBlock;
+import com.harleylizard.witches_way.common.block.SpanishMossBlock;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
@@ -44,6 +45,8 @@ public final class WitchesWayBlocks {
     public static final Block ROWAN_LEAVES = leaves();
     public static final Block HANGING_ROWAN_LEAVES = hangingLeaves();
     public static final Block ROWAN_SAPLING = sapling("rowan", WitchesWayConfiguredFeatures.ROWAN_TREE);
+
+    public static final Block SPANISH_MOSS = new SpanishMossBlock(Properties.of().sound(SoundType.GRASS).noOcclusion().noCollission().randomTicks());
 
     public static final Block WHITE_STONE_ALTAR = stoneAltar();
     public static final Block LIGHT_GRAY_STONE_ALTAR = stoneAltar();
@@ -92,6 +95,8 @@ public final class WitchesWayBlocks {
         register("rowan_leaves", ROWAN_LEAVES);
         register("hanging_rowan_leaves", HANGING_ROWAN_LEAVES);
         register("rowan_sapling", ROWAN_SAPLING);
+
+        register("spanish_moss", SPANISH_MOSS);
 
         register("white_stone_altar", WHITE_STONE_ALTAR);
         register("light_gray_stone_altar", LIGHT_GRAY_STONE_ALTAR);

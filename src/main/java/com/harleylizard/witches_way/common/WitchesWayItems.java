@@ -41,6 +41,8 @@ public final class WitchesWayItems {
     public static final Item HANGING_ROWAN_LEAVES = blockItem(WitchesWayBlocks.HANGING_ROWAN_LEAVES);
     public static final Item ROWAN_SAPLING = blockItem(WitchesWayBlocks.ROWAN_SAPLING);
 
+    public static final Item SPANISH_MOSS = blockItem(WitchesWayBlocks.SPANISH_MOSS);
+
     public static final Item WHITE_STONE_ALTAR = blockItem(WitchesWayBlocks.WHITE_STONE_ALTAR);
     public static final Item LIGHT_GRAY_STONE_ALTAR = blockItem(WitchesWayBlocks.LIGHT_GRAY_STONE_ALTAR);
     public static final Item GRAY_STONE_ALTAR = blockItem(WitchesWayBlocks.GRAY_STONE_ALTAR);
@@ -92,6 +94,8 @@ public final class WitchesWayItems {
         output.accept(HANGING_ROWAN_LEAVES);
         output.accept(ROWAN_SAPLING);
 
+        output.accept(SPANISH_MOSS);
+
         output.accept(WHITE_STONE_ALTAR);
         output.accept(LIGHT_GRAY_STONE_ALTAR);
         output.accept(GRAY_STONE_ALTAR);
@@ -141,6 +145,8 @@ public final class WitchesWayItems {
         register("rowan_leaves", ROWAN_LEAVES);
         register("hanging_rowan_leaves", HANGING_ROWAN_LEAVES);
         register("rowan_sapling", ROWAN_SAPLING);
+
+        register("spanish_moss", SPANISH_MOSS);
 
         register("white_stone_altar", WHITE_STONE_ALTAR);
         register("light_gray_stone_altar", LIGHT_GRAY_STONE_ALTAR);

@@ -1,5 +1,6 @@
 package com.harleylizard.witches_way.common.tree;
 
+import com.harleylizard.witches_way.common.WitchesWayBlockTags;
 import com.harleylizard.witches_way.common.block.HangingLeavesBlock;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
@@ -85,7 +86,7 @@ public record Leaves(String leaves, String hangingLeaves, int wideness, int tall
 
         var inTheWay = level.getBlockState(blockPos);
 
-        if (inTheWay.is(BlockTags.REPLACEABLE)) {
+        if (inTheWay.is(WitchesWayBlockTags.HANGING_LEAVES_CAN_REPLACE)) {
             blockState = HangingLeavesBlock.setFaces(blockState, n);
 
             if (inTheWay.canSurvive(level, blockPos)) {
