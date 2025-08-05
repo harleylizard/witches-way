@@ -1,5 +1,6 @@
 package com.harleylizard.witches_way.common.block;
 
+import com.harleylizard.witches_way.common.Util;
 import com.harleylizard.witches_way.common.WitchesWayBlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -15,8 +16,10 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
-public final class HangingLeavesBlock extends Block {
+public final class HangingLeavesBlock extends ShapeBlock {
     public static final IntegerProperty FACES = IntegerProperty.create("faces", 0, 256);
 
     public HangingLeavesBlock(Properties properties) {
@@ -62,8 +65,27 @@ public final class HangingLeavesBlock extends Block {
 
                 growTo(serverLevel, blockPos.below(), i);
             }
-
         }
+    }
+
+    @Override
+    public VoxelShape shapeFrom(BlockState blockState) {
+        var shape = Shapes.empty();
+
+        var faces = getFaces(blockState);
+
+        for (var direction : Direction.Plane.HORIZONTAL) {
+            var i = direction.ordinal();
+
+            var stage = stage(faces, i);
+            if (stage > 0) {
+                var min = stage == 1 ? 0.0d : (6.0d / 16.0f);
+
+                shape = Shapes.or(shape, Util.rotateShape(Shapes.box(0.0d, min, 0.0, 1.0d, 1.0d, 1.0d / 16.0d), i));
+            }
+        }
+
+        return shape;
     }
 
     public void growTo(Level level, BlockPos blockPos, int i) {
