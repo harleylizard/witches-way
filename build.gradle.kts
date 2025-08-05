@@ -43,7 +43,6 @@ tasks.test {
     useJUnitPlatform()
 }
 
-// resource processing
 val processed = project.layout.buildDirectory.dir("processed")
 
 sourceSets.main.get().resources.srcDir(processed.get().asFile)
@@ -103,7 +102,20 @@ val wood =
             log
             asTemplate("template/block_state/planks.json") or
             asTemplate("template/block_state/stairs.json") or
-            asTemplate("template/block_state/leaves.json")
+            asTemplate("template/block_state/leaves.json") or
+            asTemplate("template/block_state/sapling.json")
+
+val logBlocks =
+        asTemplate("template/block/log.json") or
+        asTemplate("template/block/log_horizontal.json") or
+        asTemplate("template/block/wood.json")
+
+val woodBlocks =
+            logBlocks or
+            asTemplate("template/block/planks.json") or
+            asTemplate("template/block/stairs.json") or
+            asTemplate("template/block/stairs_inner.json") or
+            asTemplate("template/block/stairs_outer.json")
 
 val process = tasks.register("process") {
     group = "build"
@@ -112,13 +124,22 @@ val process = tasks.register("process") {
         processed.get().asFile.takeUnless { it.exists() }?.mkdirs()
 
         wood.process("witches-way", "alder", "assets/witches-way/blockstates")
+        woodBlocks.process("witches-way", "alder", "assets/witches-way/models/block")
+
         log.process("witches-way", "stripped_alder", "assets/witches-way/blockstates")
+        logBlocks.process("witches-way", "stripped_alder", "assets/witches-way/models/block")
 
         wood.process("witches-way", "hawthorn", "assets/witches-way/blockstates")
+        woodBlocks.process("witches-way", "hawthorn", "assets/witches-way/models/block")
+
         log.process("witches-way", "stripped_hawthorn", "assets/witches-way/blockstates")
+        logBlocks.process("witches-way", "stripped_hawthorn", "assets/witches-way/models/block")
 
         wood.process("witches-way", "rowan", "assets/witches-way/blockstates")
+        woodBlocks.process("witches-way", "rowan", "assets/witches-way/models/block")
+
         log.process("witches-way", "stripped_rowan", "assets/witches-way/blockstates")
+        logBlocks.process("witches-way", "stripped_rowan", "assets/witches-way/models/block")
     }
 }
 

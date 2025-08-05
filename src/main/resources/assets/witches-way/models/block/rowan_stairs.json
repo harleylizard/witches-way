@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "witches-way:block/rowan_planks",
-    "side": "witches-way:block/rowan_planks",
-    "top": "witches-way:block/rowan_planks"
-  }
-}
