@@ -10,6 +10,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.ticks.TickPriority;
 
 import java.util.HashSet;
@@ -64,23 +65,51 @@ public record Leaves(String leaves, String hangingLeaves, int wideness, int tall
     }
 
     public void leaf(WorldGenLevel level, BlockPos blockPos, RandomSource random, int i, BlockStates blocks) {
-        var blockState = level.getBlockState(blockPos);
-
-        if (blockState.is(BlockTags.REPLACEABLE) && random.nextBoolean()) {
-            blockState = blocks.get(hangingLeaves).getState(random, blockPos);
+        if (random.nextBoolean()) {
+            var blockState = blocks.get(hangingLeaves).getState(random, blockPos);
 
             if (blockState.getBlock() instanceof HangingLeavesBlock) {
-                var j = HangingLeavesBlock.toHorizontal(i);
-                level.setBlock(blockPos, blockState.setValue(HangingLeavesBlock.FACES, 1 << j), Block.UPDATE_ALL);
-
-                var below = blockPos.below();
-                if (level.getBlockState(below).is(BlockTags.REPLACEABLE)) {
-                    level.setBlock(below, blockState.setValue(HangingLeavesBlock.FACES, 2 << j), Block.UPDATE_ALL);
-
+                if (merge(level, blockPos, blockState, i, 1)) {
+                    merge(level, blockPos.below(), blockState, i, 2);
                 }
+
             }
 
         }
+    }
+
+    public boolean merge(WorldGenLevel level, BlockPos blockPos, BlockState blockState, int i, int j) {
+        var k = HangingLeavesBlock.toHorizontal(i);
+
+        var n = j << k;
+
+        var inTheWay = level.getBlockState(blockPos);
+
+        if (inTheWay.is(BlockTags.REPLACEABLE)) {
+            blockState = HangingLeavesBlock.setFaces(blockState, n);
+
+            if (inTheWay.canSurvive(level, blockPos)) {
+                level.setBlock(blockPos, blockState, Block.UPDATE_ALL);
+            }
+
+            return true;
+        }
+
+        if (inTheWay.is(blockState.getBlock())) {
+            var m = HangingLeavesBlock.getFaces(inTheWay);
+
+            if (((m >> k) & 3) == 0) {
+                blockState = HangingLeavesBlock.setFaces(inTheWay, m | n);
+
+                if (inTheWay.canSurvive(level, blockPos)) {
+                    level.setBlock(blockPos, blockState, Block.UPDATE_ALL);
+                }
+
+                return true;
+            }
+        }
+
+        return false;
     }
 
 }
