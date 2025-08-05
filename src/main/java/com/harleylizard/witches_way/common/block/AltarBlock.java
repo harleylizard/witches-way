@@ -49,9 +49,8 @@ public final class AltarBlock extends Block implements EntityBlock {
         queue.add(blockPos);
 
         var sides = 0;
-        var tries = 0;
 
-        while (!queue.isEmpty() && tries <= 4 * 6) {
+        for (var tries = 0; !queue.isEmpty() && tries <= 4 * 6; tries++) {
             var current = queue.poll();
 
             sides += countSides(level, current);
