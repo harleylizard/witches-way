@@ -11,7 +11,7 @@
       "leaves": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "minecraft:oak_leaves",
+          "Name": "witches-way:alder_leaves",
           "Properties": {
             "distance": "7",
             "persistent": "false",

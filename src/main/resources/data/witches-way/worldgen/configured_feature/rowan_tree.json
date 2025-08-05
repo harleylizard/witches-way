@@ -11,7 +11,7 @@
       "leaves": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "minecraft:oak_leaves",
+          "Name": "witches-way:rowan_leaves",
           "Properties": {
             "distance": "7",
             "persistent": "false",
@@ -22,7 +22,7 @@
       "hanging_leaves": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "witches-way:hanging_alder_leaves"
+          "Name": "witches-way:hanging_rowan_leaves"
         }
       }
     },

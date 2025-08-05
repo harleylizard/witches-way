@@ -1,0 +1,99 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "witches-way:block/hanging_rowan_leaves",
+        "y": 180,
+        "uvlock": true
+      },
+      "when": {
+        "OR": [
+          { "faces": 1 }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "witches-way:block/hanging_rowan_leaves",
+        "uvlock": true
+      },
+      "when": {
+        "OR": [
+          { "faces": 4 }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "witches-way:block/hanging_rowan_leaves",
+        "y": 90,
+        "uvlock": true
+      },
+      "when": {
+        "OR": [
+          { "faces": 16 }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "witches-way:block/hanging_rowan_leaves",
+        "y": 270,
+        "uvlock": true
+      },
+      "when": {
+        "OR": [
+          { "faces": 64 }
+        ]
+      }
+    },
+
+    {
+      "apply": {
+        "model": "witches-way:block/hanging_alder_leaves_bottom",
+        "y": 180,
+        "uvlock": true
+      },
+      "when": {
+        "OR": [
+          { "faces": 2 }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "witches-way:block/hanging_alder_leaves_bottom",
+        "uvlock": true
+      },
+      "when": {
+        "OR": [
+          { "faces": 8 }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "witches-way:block/hanging_alder_leaves_bottom",
+        "y": 90,
+        "uvlock": true
+      },
+      "when": {
+        "OR": [
+          { "faces": 32 }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "witches-way:block/hanging_alder_leaves_bottom",
+        "y": 270,
+        "uvlock": true
+      },
+      "when": {
+        "OR": [
+          { "faces": 128 }
+        ]
+      }
+    }
+  ]
+}

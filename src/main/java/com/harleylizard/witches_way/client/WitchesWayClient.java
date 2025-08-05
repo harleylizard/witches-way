@@ -25,19 +25,19 @@ public final class WitchesWayClient implements ClientModInitializer {
                 WitchesWayBlocks.ROWAN_SAPLING
                 );
 
-        var alderLeaves = 0x499B51;
+        var alderLeaves = 0x3B9943;
         var hawthornLeaves = 0x499B51;
-        var rowanLeaves = 0x499B51;
+        var rowanLeaves = 0x8BAD4C;
 
         var block = ColorProviderRegistry.BLOCK;
-        block.register((blockState, blockAndTintGetter, blockPos, i) -> tintedFoliage(alderLeaves, blockAndTintGetter, blockPos), WitchesWayBlocks.HANGING_ALDER_LEAVES);
-        block.register((blockState, blockAndTintGetter, blockPos, i) -> tintedFoliage(hawthornLeaves, blockAndTintGetter, blockPos), WitchesWayBlocks.HANGING_HAWTHORN_LEAVES);
-        block.register((blockState, blockAndTintGetter, blockPos, i) -> tintedFoliage(rowanLeaves, blockAndTintGetter, blockPos), WitchesWayBlocks.HANGING_ROWAN_LEAVES);
+        block.register((blockState, blockAndTintGetter, blockPos, i) -> tintedFoliage(alderLeaves, blockAndTintGetter, blockPos), WitchesWayBlocks.ALDER_LEAVES, WitchesWayBlocks.HANGING_ALDER_LEAVES);
+        block.register((blockState, blockAndTintGetter, blockPos, i) -> tintedFoliage(hawthornLeaves, blockAndTintGetter, blockPos), WitchesWayBlocks.HAWTHORN_LEAVES, WitchesWayBlocks.HANGING_HAWTHORN_LEAVES);
+        block.register((blockState, blockAndTintGetter, blockPos, i) -> tintedFoliage(rowanLeaves, blockAndTintGetter, blockPos), WitchesWayBlocks.ROWAN_LEAVES, WitchesWayBlocks.HANGING_ROWAN_LEAVES);
 
         var item = ColorProviderRegistry.ITEM;
-        item.register((itemStack, i) -> alderLeaves, WitchesWayItems.HANGING_ALDER_LEAVES);
-        item.register((itemStack, i) -> hawthornLeaves, WitchesWayItems.HANGING_HAWTHORN_LEAVES);
-        item.register((itemStack, i) -> rowanLeaves, WitchesWayItems.HANGING_ROWAN_LEAVES);
+        item.register((itemStack, i) -> alderLeaves, WitchesWayItems.ALDER_LEAVES, WitchesWayItems.HANGING_ALDER_LEAVES);
+        item.register((itemStack, i) -> hawthornLeaves, WitchesWayItems.HAWTHORN_LEAVES, WitchesWayItems.HANGING_HAWTHORN_LEAVES);
+        item.register((itemStack, i) -> rowanLeaves, WitchesWayItems.ROWAN_LEAVES, WitchesWayItems.HANGING_ROWAN_LEAVES);
 
     }
 
@@ -51,7 +51,7 @@ public final class WitchesWayClient implements ClientModInitializer {
         var g = (float) ((color >> 8) & 0xFF) / 255.0f;
         var b = (float) (color & 0xFF) / 255.0f;
 
-        var blend = 0.5f;
+        var blend = 0.325f;
         r = blend(r, leafR, blend);
         g = blend(g, leafG, blend);
         b = blend(b, leafB, blend);
