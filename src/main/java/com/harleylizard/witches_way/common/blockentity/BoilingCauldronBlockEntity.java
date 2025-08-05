@@ -1,5 +1,6 @@
 package com.harleylizard.witches_way.common.blockentity;
 
+import com.harleylizard.witches_way.common.WitchesWay;
 import com.harleylizard.witches_way.common.WitchesWayBlockEntities;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
@@ -7,6 +8,9 @@ import net.fabricmc.fabric.api.transfer.v1.fluid.base.SingleFluidStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -21,6 +25,8 @@ public final class BoilingCauldronBlockEntity extends BlockEntity {
         @Override
         protected void onFinalCommit() {
             setChanged();
+
+            WitchesWay.syncBlockEntity(BoilingCauldronBlockEntity.this);
         }
 
     };
@@ -40,6 +46,11 @@ public final class BoilingCauldronBlockEntity extends BlockEntity {
     @Override
     protected void loadAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
         fluid.readNbt(compoundTag.getCompound("Fluid"), provider);
+    }
+
+    @Override
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this, BlockEntity::saveCustomAndMetadata);
     }
 
     public SingleFluidStorage getFluid() {

@@ -55,8 +55,4 @@ public final class BoilingCauldronBlock extends Block implements EntityBlock {
         return blockState.setValue(BlockStateProperties.HORIZONTAL_AXIS, axis);
     }
 
-    public static Direction.Axis get(BlockState blockState) {
-        return blockState.getValue(BlockStateProperties.HORIZONTAL_AXIS);
-    }
-
 }
