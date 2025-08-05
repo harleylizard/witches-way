@@ -3,6 +3,7 @@ package com.harleylizard.witches_way.common;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -40,6 +41,8 @@ public final class WitchesWay implements ModInitializer {
             }
 
         });
+
+        FluidStorage.SIDED.registerForBlockEntity((cauldron, direction) -> direction != null && direction.getAxis().isHorizontal() ? cauldron.getFluid() : null, WitchesWayBlockEntities.BOILING_CAULDRON);
 
     }
 
