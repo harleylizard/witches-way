@@ -1,9 +1,6 @@
 package com.harleylizard.witches_way.common;
 
-import com.harleylizard.witches_way.common.block.AltarBlock;
-import com.harleylizard.witches_way.common.block.GlisteningWeedBlock;
-import com.harleylizard.witches_way.common.block.HangingLeavesBlock;
-import com.harleylizard.witches_way.common.block.SpanishMossBlock;
+import com.harleylizard.witches_way.common.block.*;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
@@ -50,6 +47,8 @@ public final class WitchesWayBlocks {
 
     public static final Block SPANISH_MOSS = new SpanishMossBlock(Properties.of().sound(SoundType.GRASS).noOcclusion().noCollission().randomTicks());
     public static final Block GLISTENING_WEED = new GlisteningWeedBlock(Properties.of().sound(SoundType.GRASS).noOcclusion().noCollission().randomTicks().lightLevel(blockState -> 6).emissiveRendering(Blocks::always).hasPostProcess(Blocks::always).offsetType(BlockBehaviour.OffsetType.XZ));
+
+    public static final Block BOILING_CAULDRON = new BoilingCauldronBlock(Properties.of().sound(SoundType.METAL).noOcclusion());
 
     public static final Block WHITE_STONE_ALTAR = stoneAltar();
     public static final Block LIGHT_GRAY_STONE_ALTAR = stoneAltar();
@@ -101,6 +100,8 @@ public final class WitchesWayBlocks {
 
         register("spanish_moss", SPANISH_MOSS);
         register("glistening_weed", GLISTENING_WEED);
+
+        register("boiling_cauldron", BOILING_CAULDRON);
 
         register("white_stone_altar", WHITE_STONE_ALTAR);
         register("light_gray_stone_altar", LIGHT_GRAY_STONE_ALTAR);

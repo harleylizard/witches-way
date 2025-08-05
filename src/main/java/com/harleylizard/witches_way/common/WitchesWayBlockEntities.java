@@ -1,6 +1,7 @@
 package com.harleylizard.witches_way.common;
 
 import com.harleylizard.witches_way.common.blockentity.AltarBlockEntity;
+import com.harleylizard.witches_way.common.blockentity.BoilingCauldronBlockEntity;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -25,8 +26,12 @@ public final class WitchesWayBlockEntities {
             WitchesWayBlocks.PINK_STONE_ALTAR
             ).build();
 
+    public static final BlockEntityType<BoilingCauldronBlockEntity> BOILING_CAULDRON = BlockEntityType.Builder.of(BoilingCauldronBlockEntity::new, WitchesWayBlocks.BOILING_CAULDRON).build();
+
     public static void register() {
         register("altar", ALTAR);
+        register("boiling_cauldron", BOILING_CAULDRON);
+
     }
 
     public static void register(String name, BlockEntityType<?> type) {

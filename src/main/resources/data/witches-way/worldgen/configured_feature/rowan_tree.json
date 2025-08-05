@@ -34,15 +34,15 @@
           "block": "log",
           "tallness": {
             "type": "minecraft:biased_to_bottom",
-            "min_inclusive": 3,
-            "max_inclusive": 4
+            "min_inclusive": 4,
+            "max_inclusive": 5
           }
         },
         {
           "type": "leaves",
           "leaves": "leaves",
           "hanging_leaves": "hanging_leaves",
-          "wideness": 3,
+          "wideness": 4,
           "tallness": 1
         },
         {
@@ -57,7 +57,7 @@
           "type": "leaves",
           "leaves": "leaves",
           "hanging_leaves": "hanging_leaves",
-          "wideness": 2,
+          "wideness": 3,
           "tallness": 1
         }
       ]

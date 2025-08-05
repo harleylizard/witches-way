@@ -61,7 +61,7 @@ public sealed class HangingLeavesBlock extends ShapeBlock permits SpanishMossBlo
         for (var direction : Direction.Plane.HORIZONTAL) {
             var i = direction.ordinal();
 
-            if (stage(faces, i) > 0 && randomSource.nextInt(15) == 0) {
+            if (stage(faces, i) == 1 && randomSource.nextInt(15) == 0) {
 
                 growTo(serverLevel, blockPos.below(), i);
             }

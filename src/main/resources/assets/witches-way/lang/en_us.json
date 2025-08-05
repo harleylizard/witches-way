@@ -33,6 +33,8 @@
   "block.witches-way.spanish_moss": "Spanish Moss",
   "block.witches-way.glistening_weed": "Glistening Weed",
 
+  "block.witches-way.boiling_cauldron": "Boiling Cauldron",
+
   "block.witches-way.white_stone_altar": "White Stone Altar",
   "block.witches-way.light_gray_stone_altar": "Light Gray Stone Altar",
   "block.witches-way.gray_stone_altar": "Gray Stone Altar",
@@ -48,5 +50,8 @@
   "block.witches-way.blue_stone_altar": "Blue Stone Altar",
   "block.witches-way.purple_stone_altar": "Purple Stone Altar",
   "block.witches-way.magenta_stone_altar": "Magenta Stone Altar",
-  "block.witches-way.pink_stone_altar": "Pink Stone Altar"
+  "block.witches-way.pink_stone_altar": "Pink Stone Altar",
+
+  "item.witches-way.belladonna_seeds": "Belladonna Seeds",
+  "item.witches-way.mandrake_seeds": "Mandrake Seeds"
 }

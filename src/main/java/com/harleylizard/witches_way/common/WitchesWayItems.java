@@ -45,6 +45,8 @@ public final class WitchesWayItems {
     public static final Item BELLADONNA_SEEDS = new ItemNameBlockItem(Blocks.WHEAT, new Item.Properties());
     public static final Item MANDRAKE_SEEDS = new ItemNameBlockItem(Blocks.WHEAT, new Item.Properties());
 
+    public static final Item BOILING_CAULDRON = blockItem(WitchesWayBlocks.BOILING_CAULDRON);
+
     public static final Item WHITE_STONE_ALTAR = blockItem(WitchesWayBlocks.WHITE_STONE_ALTAR);
     public static final Item LIGHT_GRAY_STONE_ALTAR = blockItem(WitchesWayBlocks.LIGHT_GRAY_STONE_ALTAR);
     public static final Item GRAY_STONE_ALTAR = blockItem(WitchesWayBlocks.GRAY_STONE_ALTAR);
@@ -102,6 +104,8 @@ public final class WitchesWayItems {
         output.accept(BELLADONNA_SEEDS);
         output.accept(MANDRAKE_SEEDS);
 
+        output.accept(BOILING_CAULDRON);
+
         output.accept(WHITE_STONE_ALTAR);
         output.accept(LIGHT_GRAY_STONE_ALTAR);
         output.accept(GRAY_STONE_ALTAR);
@@ -157,6 +161,8 @@ public final class WitchesWayItems {
 
         register("belladonna_seeds", BELLADONNA_SEEDS);
         register("mandrake_seeds", MANDRAKE_SEEDS);
+
+        register("boiling_cauldron", BOILING_CAULDRON);
 
         register("white_stone_altar", WHITE_STONE_ALTAR);
         register("light_gray_stone_altar", LIGHT_GRAY_STONE_ALTAR);
