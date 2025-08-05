@@ -4,11 +4,9 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 
 public final class WitchesWayItems {
     public static final Item ALDER_LOG = blockItem(WitchesWayBlocks.ALDER_LOG);
@@ -43,6 +41,9 @@ public final class WitchesWayItems {
 
     public static final Item SPANISH_MOSS = blockItem(WitchesWayBlocks.SPANISH_MOSS);
     public static final Item GLISTENING_WEED = blockItem(WitchesWayBlocks.GLISTENING_WEED);
+
+    public static final Item BELLADONNA_SEEDS = new ItemNameBlockItem(Blocks.WHEAT, new Item.Properties());
+    public static final Item MANDRAKE_SEEDS = new ItemNameBlockItem(Blocks.WHEAT, new Item.Properties());
 
     public static final Item WHITE_STONE_ALTAR = blockItem(WitchesWayBlocks.WHITE_STONE_ALTAR);
     public static final Item LIGHT_GRAY_STONE_ALTAR = blockItem(WitchesWayBlocks.LIGHT_GRAY_STONE_ALTAR);
@@ -98,6 +99,9 @@ public final class WitchesWayItems {
         output.accept(SPANISH_MOSS);
         output.accept(GLISTENING_WEED);
 
+        output.accept(BELLADONNA_SEEDS);
+        output.accept(MANDRAKE_SEEDS);
+
         output.accept(WHITE_STONE_ALTAR);
         output.accept(LIGHT_GRAY_STONE_ALTAR);
         output.accept(GRAY_STONE_ALTAR);
@@ -150,6 +154,9 @@ public final class WitchesWayItems {
 
         register("spanish_moss", SPANISH_MOSS);
         register("glistening_weed", GLISTENING_WEED);
+
+        register("belladonna_seeds", BELLADONNA_SEEDS);
+        register("mandrake_seeds", MANDRAKE_SEEDS);
 
         register("white_stone_altar", WHITE_STONE_ALTAR);
         register("light_gray_stone_altar", LIGHT_GRAY_STONE_ALTAR);
