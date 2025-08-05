@@ -1,6 +1,7 @@
 package com.harleylizard.witches_way.common;
 
 import com.harleylizard.witches_way.common.block.AltarBlock;
+import com.harleylizard.witches_way.common.block.GlisteningWeedBlock;
 import com.harleylizard.witches_way.common.block.HangingLeavesBlock;
 import com.harleylizard.witches_way.common.block.SpanishMossBlock;
 import net.minecraft.core.Registry;
@@ -8,6 +9,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.grower.TreeGrower;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.material.MapColor;
@@ -47,6 +49,7 @@ public final class WitchesWayBlocks {
     public static final Block ROWAN_SAPLING = sapling("rowan", WitchesWayConfiguredFeatures.ROWAN_TREE);
 
     public static final Block SPANISH_MOSS = new SpanishMossBlock(Properties.of().sound(SoundType.GRASS).noOcclusion().noCollission().randomTicks());
+    public static final Block GLISTENING_WEED = new GlisteningWeedBlock(Properties.of().sound(SoundType.GRASS).noOcclusion().noCollission().randomTicks().lightLevel(blockState -> 6).emissiveRendering(Blocks::always).hasPostProcess(Blocks::always).offsetType(BlockBehaviour.OffsetType.XZ));
 
     public static final Block WHITE_STONE_ALTAR = stoneAltar();
     public static final Block LIGHT_GRAY_STONE_ALTAR = stoneAltar();
@@ -97,6 +100,7 @@ public final class WitchesWayBlocks {
         register("rowan_sapling", ROWAN_SAPLING);
 
         register("spanish_moss", SPANISH_MOSS);
+        register("glistening_weed", GLISTENING_WEED);
 
         register("white_stone_altar", WHITE_STONE_ALTAR);
         register("light_gray_stone_altar", LIGHT_GRAY_STONE_ALTAR);

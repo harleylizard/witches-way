@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "witches-way:block/glistening_weed"
+      },
+      {
+        "model": "witches-way:block/greenish_glistening_weed"
+      }
+    ]
+  }
+}

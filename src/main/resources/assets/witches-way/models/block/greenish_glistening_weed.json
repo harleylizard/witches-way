@@ -1,0 +1,8 @@
+{
+  "parent": "witches-way:block/glistening_weed",
+  "textures": {
+    "top": "witches-way:block/greenish_glistening_weed_top",
+    "bottom": "witches-way:block/greenish_glistening_weed_bottom",
+    "side": "witches-way:block/greenish_glistening_weed_side"
+  }
+}

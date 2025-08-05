@@ -22,7 +22,10 @@ public final class WitchesWayClient implements ClientModInitializer {
                 WitchesWayBlocks.HAWTHORN_SAPLING,
 
                 WitchesWayBlocks.HANGING_ROWAN_LEAVES,
-                WitchesWayBlocks.ROWAN_SAPLING
+                WitchesWayBlocks.ROWAN_SAPLING,
+
+                WitchesWayBlocks.SPANISH_MOSS,
+                WitchesWayBlocks.GLISTENING_WEED
                 );
 
         var alderLeaves = 0x3B9943;
