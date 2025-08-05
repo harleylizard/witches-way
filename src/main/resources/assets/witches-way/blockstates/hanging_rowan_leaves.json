@@ -301,7 +301,7 @@
     },
     {
       "apply": {
-        "model": "witches-way:block/hanging_alder_leaves_bottom",
+        "model": "witches-way:block/hanging_rowan_leaves_bottom",
         "y": 180,
         "uvlock": true
       },
@@ -376,7 +376,7 @@
     },
     {
       "apply": {
-        "model": "witches-way:block/hanging_alder_leaves_bottom",
+        "model": "witches-way:block/hanging_rowan_leaves_bottom",
         "uvlock": true
       },
       "when": {
@@ -450,7 +450,7 @@
     },
     {
       "apply": {
-        "model": "witches-way:block/hanging_alder_leaves_bottom",
+        "model": "witches-way:block/hanging_rowan_leaves_bottom",
         "y": 90,
         "uvlock": true
       },
@@ -525,7 +525,7 @@
     },
     {
       "apply": {
-        "model": "witches-way:block/hanging_alder_leaves_bottom",
+        "model": "witches-way:block/hanging_rowan_leaves_bottom",
         "y": 270,
         "uvlock": true
       },

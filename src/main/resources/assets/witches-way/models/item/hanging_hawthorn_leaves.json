@@ -1,6 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "witches-way:block/hanging_hawthorn_leaves"
+    "layer0": "witches-way:block/hanging_hawthorn_leaves",
+    "layer1": "witches-way:block/hanging_hawthorn_leaves_overlay"
   }
 }

@@ -1,7 +1,7 @@
 {
   "parent": "witches-way:block/hanging_leaves_with_overlay",
   "textures": {
-    "side": "witches-way:block/hanging_alder_leaves",
+    "side": "witches-way:block/hanging_hawthorn_leaves",
     "overlay": "witches-way:block/hanging_rowan_leaves_overlay"
   }
 }

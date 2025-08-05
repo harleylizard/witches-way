@@ -35,9 +35,9 @@ public final class WitchesWayClient implements ClientModInitializer {
         block.register((blockState, blockAndTintGetter, blockPos, i) -> tintedFoliage(rowanLeaves, blockAndTintGetter, blockPos), WitchesWayBlocks.ROWAN_LEAVES, WitchesWayBlocks.HANGING_ROWAN_LEAVES);
 
         var item = ColorProviderRegistry.ITEM;
-        item.register((itemStack, i) -> alderLeaves, WitchesWayItems.ALDER_LEAVES, WitchesWayItems.HANGING_ALDER_LEAVES);
-        item.register((itemStack, i) -> hawthornLeaves, WitchesWayItems.HAWTHORN_LEAVES, WitchesWayItems.HANGING_HAWTHORN_LEAVES);
-        item.register((itemStack, i) -> rowanLeaves, WitchesWayItems.ROWAN_LEAVES, WitchesWayItems.HANGING_ROWAN_LEAVES);
+        item.register((itemStack, i) -> i == 0 ? alderLeaves : 0xFFFFFF, WitchesWayItems.ALDER_LEAVES, WitchesWayItems.HANGING_ALDER_LEAVES);
+        item.register((itemStack, i) -> i == 0 ? hawthornLeaves : 0xFFFFFF, WitchesWayItems.HAWTHORN_LEAVES, WitchesWayItems.HANGING_HAWTHORN_LEAVES);
+        item.register((itemStack, i) -> i == 0 ? rowanLeaves : 0xFFFFFF, WitchesWayItems.ROWAN_LEAVES, WitchesWayItems.HANGING_ROWAN_LEAVES);
 
     }
 

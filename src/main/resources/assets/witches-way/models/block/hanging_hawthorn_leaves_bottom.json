@@ -1,0 +1,6 @@
+{
+  "parent": "witches-way:block/hanging_leaves",
+  "textures": {
+    "side": "witches-way:block/hanging_hawthorn_leaves_bottom"
+  }
+}
