@@ -26,8 +26,8 @@ public final class WitchesWayClient implements ClientModInitializer {
                 );
 
         var alderLeaves = 0x3B9943;
-        var hawthornLeaves = 0x499B51;
-        var rowanLeaves = 0x8BAD4C;
+        var hawthornLeaves = 0x598C48;
+        var rowanLeaves = 0x93BF42;
 
         var block = ColorProviderRegistry.BLOCK;
         block.register((blockState, blockAndTintGetter, blockPos, i) -> tintedFoliage(alderLeaves, blockAndTintGetter, blockPos), WitchesWayBlocks.ALDER_LEAVES, WitchesWayBlocks.HANGING_ALDER_LEAVES);

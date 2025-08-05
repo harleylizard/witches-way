@@ -11,7 +11,12 @@
       "leaves": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "witches-way:hawthorn_leaves"
+          "Name": "witches-way:hawthorn_leaves",
+          "Properties": {
+            "distance": "7",
+            "persistent": "false",
+            "waterlogged": "false"
+          }
         }
       },
       "hanging_leaves": {
@@ -38,7 +43,22 @@
           "leaves": "leaves",
           "hanging_leaves": "hanging_leaves",
           "wideness": 3,
-          "tallness": 2
+          "tallness": 1
+        },
+        {
+          "type": "column",
+          "block": "log",
+          "tallness": {
+            "type": "minecraft:constant",
+            "value": 3
+          }
+        },
+        {
+          "type": "leaves",
+          "leaves": "leaves",
+          "hanging_leaves": "hanging_leaves",
+          "wideness": 2,
+          "tallness": 1
         }
       ]
     }
