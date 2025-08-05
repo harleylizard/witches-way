@@ -1,6 +1,10 @@
 {
   "variants": {
-    "": {
+    "axis=x": {
+      "model": "witches-way:block/boiling_cauldron",
+      "y": 90
+    },
+    "axis=z": {
       "model": "witches-way:block/boiling_cauldron"
     }
   }

@@ -24,7 +24,7 @@ public sealed class HangingLeavesBlock extends ShapeBlock permits SpanishMossBlo
 
     public HangingLeavesBlock(Properties properties) {
         super(properties);
-        registerDefaultState(getStateDefinition().any().setValue(FACES, 0));
+        registerDefaultState(setFaces(getStateDefinition().any(), 0));
     }
 
     @Override
