@@ -37,7 +37,7 @@ public final class BoilingCauldronBlockEntityRenderer implements BlockEntityRend
             var toZ = 14.0f / 16.0f;
 
             var y = (3.0f / 16.0f) + (amount * 10.0f) / 16.0f;
-            var color = BiomeColors.getAverageWaterColor(blockEntity.getLevel(), blockEntity.getBlockPos()) | (0xFF << 24);
+            var color = BiomeColors.getAverageWaterColor(blockEntity.getLevel(), blockEntity.getBlockPos()) | (0xC0 << 24);
 
             vertex(consumer, last, toX,   y, toZ, texture.getU0(), texture.getV0(), color, i, 0.0f, 1.0f, 0.0f);
             vertex(consumer, last, toX,   y, fromZ, texture.getU0(), texture.getV1(), color, i, 0.0f, 1.0f, 0.0f);
