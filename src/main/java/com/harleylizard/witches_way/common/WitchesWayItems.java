@@ -15,6 +15,7 @@ public final class WitchesWayItems {
     public static final Item STRIPPED_ALDER_WOOD = blockItem(WitchesWayBlocks.STRIPPED_ALDER_WOOD);
     public static final Item ALDER_PLANKS = blockItem(WitchesWayBlocks.ALDER_PLANKS);
     public static final Item ALDER_STAIRS = blockItem(WitchesWayBlocks.ALDER_STAIRS);
+    public static final Item ALDER_SLAB = blockItem(WitchesWayBlocks.ALDER_SLAB);
     public static final Item ALDER_LEAVES = blockItem(WitchesWayBlocks.ALDER_LEAVES);
     public static final Item HANGING_ALDER_LEAVES = blockItem(WitchesWayBlocks.HANGING_ALDER_LEAVES);
     public static final Item ALDER_SAPLING = blockItem(WitchesWayBlocks.ALDER_SAPLING);
@@ -25,6 +26,7 @@ public final class WitchesWayItems {
     public static final Item STRIPPED_HAWTHORN_WOOD = blockItem(WitchesWayBlocks.STRIPPED_HAWTHORN_WOOD);
     public static final Item HAWTHORN_PLANKS = blockItem(WitchesWayBlocks.HAWTHORN_PLANKS);
     public static final Item HAWTHORN_STAIRS = blockItem(WitchesWayBlocks.HAWTHORN_STAIRS);
+    public static final Item HAWTHORN_SLAB = blockItem(WitchesWayBlocks.HAWTHORN_SLAB);
     public static final Item HAWTHORN_LEAVES = blockItem(WitchesWayBlocks.HAWTHORN_LEAVES);
     public static final Item HANGING_HAWTHORN_LEAVES = blockItem(WitchesWayBlocks.HANGING_HAWTHORN_LEAVES);
     public static final Item HAWTHORN_SAPLING = blockItem(WitchesWayBlocks.HAWTHORN_SAPLING);
@@ -35,6 +37,7 @@ public final class WitchesWayItems {
     public static final Item STRIPPED_ROWAN_WOOD = blockItem(WitchesWayBlocks.STRIPPED_ROWAN_WOOD);
     public static final Item ROWAN_PLANKS = blockItem(WitchesWayBlocks.ROWAN_PLANKS);
     public static final Item ROWAN_STAIRS = blockItem(WitchesWayBlocks.ROWAN_STAIRS);
+    public static final Item ROWAN_SLAB = blockItem(WitchesWayBlocks.ROWAN_SLAB);
     public static final Item ROWAN_LEAVES = blockItem(WitchesWayBlocks.ROWAN_LEAVES);
     public static final Item HANGING_ROWAN_LEAVES = blockItem(WitchesWayBlocks.HANGING_ROWAN_LEAVES);
     public static final Item ROWAN_SAPLING = blockItem(WitchesWayBlocks.ROWAN_SAPLING);
@@ -71,6 +74,7 @@ public final class WitchesWayItems {
         output.accept(STRIPPED_ALDER_WOOD);
         output.accept(ALDER_PLANKS);
         output.accept(ALDER_STAIRS);
+        output.accept(ALDER_SLAB);
 
         output.accept(HAWTHORN_LOG);
         output.accept(HAWTHORN_WOOD);
@@ -78,6 +82,7 @@ public final class WitchesWayItems {
         output.accept(STRIPPED_HAWTHORN_WOOD);
         output.accept(HAWTHORN_PLANKS);
         output.accept(HAWTHORN_STAIRS);
+        output.accept(HAWTHORN_SLAB);
 
         output.accept(ROWAN_LOG);
         output.accept(ROWAN_WOOD);
@@ -85,6 +90,7 @@ public final class WitchesWayItems {
         output.accept(STRIPPED_ROWAN_WOOD);
         output.accept(ROWAN_PLANKS);
         output.accept(ROWAN_STAIRS);
+        output.accept(ROWAN_SLAB);
 
         output.accept(ALDER_LEAVES);
         output.accept(HANGING_ALDER_LEAVES);
@@ -132,6 +138,7 @@ public final class WitchesWayItems {
         register("stripped_alder_wood", STRIPPED_ALDER_WOOD);
         register("alder_planks", ALDER_PLANKS);
         register("alder_stairs", ALDER_STAIRS);
+        register("alder_slab", ALDER_SLAB);
         register("alder_leaves", ALDER_LEAVES);
         register("hanging_alder_leaves", HANGING_ALDER_LEAVES);
         register("alder_sapling", ALDER_SAPLING);
@@ -142,6 +149,7 @@ public final class WitchesWayItems {
         register("stripped_hawthorn_wood", STRIPPED_HAWTHORN_WOOD);
         register("hawthorn_planks", HAWTHORN_PLANKS);
         register("hawthorn_stairs", HAWTHORN_STAIRS);
+        register("hawthorn_slab", HAWTHORN_SLAB);
         register("hawthorn_leaves", HAWTHORN_LEAVES);
         register("hanging_hawthorn_leaves", HANGING_HAWTHORN_LEAVES);
         register("hawthorn_sapling", HAWTHORN_SAPLING);
@@ -152,6 +160,7 @@ public final class WitchesWayItems {
         register("stripped_rowan_wood", STRIPPED_ROWAN_LOG);
         register("rowan_planks", ROWAN_PLANKS);
         register("rowan_stairs", ROWAN_STAIRS);
+        register("rowan_slab", ROWAN_SLAB);
         register("rowan_leaves", ROWAN_LEAVES);
         register("hanging_rowan_leaves", HANGING_ROWAN_LEAVES);
         register("rowan_sapling", ROWAN_SAPLING);

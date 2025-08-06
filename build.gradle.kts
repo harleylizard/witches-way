@@ -49,24 +49,32 @@ sourceSets.main.get().resources.srcDir(processed.get().asFile)
 
 sealed interface Template {
 
-    fun process(modId: String, name: String, dest: String): FileCollection
+    fun process(modId: String, name: String, dest: String)
 
     infix fun or(template: Template): Template
 
 }
 
-class TemplateSet(private val set: Set<Template>) : Template {
+class TemplateSet(private val set: MutableSet<Template>) : Template {
 
-    override fun process(modId: String, name: String, dest: String): FileCollection {
-        return files(set.flatMap { it.process(modId, name, dest) })
+    override fun process(modId: String, name: String, dest: String) {
+        for (template in set) {
+            template.process(modId, name, dest)
+        }
     }
 
-    override infix fun or(template: Template) = TemplateSet(HashSet(set).also { it.add(template) })
+    override infix fun or(template: Template) = this.also { it.set += template }
 }
 
 class TemplateFile(private val path: java.nio.file.Path) : Template {
 
-    override fun process(modId: String, name: String, dest: String): FileCollection {
+    override fun process(modId: String, name: String, dest: String) {
+        if (!Files.isReadable(path)) {
+            logger.info("Path not found $path")
+
+            return
+        }
+
         Files.newBufferedReader(path).use {
             val builder = StringBuilder()
 
@@ -77,10 +85,9 @@ class TemplateFile(private val path: java.nio.file.Path) : Template {
 
             writeTo(processed.get().asFile.toPath().resolve("$dest/${name}_${path.fileName}"), builder)
         }
-        return files()
     }
 
-    override infix fun or(template: Template) = TemplateSet(setOf(this, template))
+    override infix fun or(template: Template) = TemplateSet(mutableSetOf(this, template))
 
     fun writeTo(to: java.nio.file.Path, result: StringBuilder) {
         to.parent.takeUnless(Files::isDirectory)?.let(Files::createDirectories)
@@ -99,9 +106,10 @@ val log =
         asTemplate("template/block_state/wood.json")
 
 val wood =
-            log
+            log or
             asTemplate("template/block_state/planks.json") or
             asTemplate("template/block_state/stairs.json") or
+            asTemplate("template/block_state/slab.json") or
             asTemplate("template/block_state/leaves.json") or
             asTemplate("template/block_state/sapling.json")
 
@@ -115,7 +123,9 @@ val woodBlocks =
             asTemplate("template/block/planks.json") or
             asTemplate("template/block/stairs.json") or
             asTemplate("template/block/stairs_inner.json") or
-            asTemplate("template/block/stairs_outer.json")
+            asTemplate("template/block/stairs_outer.json") or
+            asTemplate("template/block/slab.json") or
+            asTemplate("template/block/slab_top.json")
 
 val process = tasks.register("process") {
     group = "build"

@@ -21,6 +21,7 @@ public final class WitchesWayBlocks {
     public static final Block STRIPPED_ALDER_WOOD = log();
     public static final Block ALDER_PLANKS = planks();
     public static final Block ALDER_STAIRS = stairs(ALDER_PLANKS);
+    public static final Block ALDER_SLAB = slab();
     public static final Block ALDER_LEAVES = leaves();
     public static final Block HANGING_ALDER_LEAVES = hangingLeaves();
     public static final Block ALDER_SAPLING = sapling("alder", WitchesWayConfiguredFeatures.ALDER_TREE);
@@ -31,6 +32,7 @@ public final class WitchesWayBlocks {
     public static final Block STRIPPED_HAWTHORN_WOOD = log();
     public static final Block HAWTHORN_PLANKS = planks();
     public static final Block HAWTHORN_STAIRS = stairs(HAWTHORN_PLANKS);
+    public static final Block HAWTHORN_SLAB = slab();
     public static final Block HAWTHORN_LEAVES = leaves();
     public static final Block HANGING_HAWTHORN_LEAVES = hangingLeaves();
     public static final Block HAWTHORN_SAPLING = sapling("hawthorn", WitchesWayConfiguredFeatures.HAWTHORN_TREE);
@@ -41,6 +43,7 @@ public final class WitchesWayBlocks {
     public static final Block STRIPPED_ROWAN_WOOD = log();
     public static final Block ROWAN_PLANKS = planks();
     public static final Block ROWAN_STAIRS = stairs(ROWAN_PLANKS);
+    public static final Block ROWAN_SLAB = slab();
     public static final Block ROWAN_LEAVES = leaves();
     public static final Block HANGING_ROWAN_LEAVES = hangingLeaves();
     public static final Block ROWAN_SAPLING = sapling("rowan", WitchesWayConfiguredFeatures.ROWAN_TREE);
@@ -74,6 +77,7 @@ public final class WitchesWayBlocks {
         register("stripped_alder_wood", STRIPPED_ALDER_WOOD);
         register("alder_planks", ALDER_PLANKS);
         register("alder_stairs", ALDER_STAIRS);
+        register("alder_slab", ALDER_SLAB);
         register("alder_leaves", ALDER_LEAVES);
         register("hanging_alder_leaves", HANGING_ALDER_LEAVES);
         register("alder_sapling", ALDER_SAPLING);
@@ -84,6 +88,7 @@ public final class WitchesWayBlocks {
         register("stripped_hawthorn_wood", STRIPPED_HAWTHORN_WOOD);
         register("hawthorn_planks", HAWTHORN_PLANKS);
         register("hawthorn_stairs", HAWTHORN_STAIRS);
+        register("hawthorn_slab", HAWTHORN_SLAB);
         register("hawthorn_leaves", HAWTHORN_LEAVES);
         register("hanging_hawthorn_leaves", HANGING_HAWTHORN_LEAVES);
         register("hawthorn_sapling", HAWTHORN_SAPLING);
@@ -94,6 +99,7 @@ public final class WitchesWayBlocks {
         register("stripped_rowan_wood", STRIPPED_ROWAN_WOOD);
         register("rowan_planks", ROWAN_PLANKS);
         register("rowan_stairs", ROWAN_STAIRS);
+        register("rowan_slab", ROWAN_SLAB);
         register("rowan_leaves", ROWAN_LEAVES);
         register("hanging_rowan_leaves", HANGING_ROWAN_LEAVES);
         register("rowan_sapling", ROWAN_SAPLING);
@@ -139,6 +145,10 @@ public final class WitchesWayBlocks {
 
     public static Block stairs(Block block) {
         return new StairBlock(block.defaultBlockState(), Properties.ofFullCopy(block));
+    }
+
+    public static Block slab() {
+        return new SlabBlock(Properties.ofFullCopy(Blocks.OAK_PLANKS));
     }
 
     public static Block leaves() {
