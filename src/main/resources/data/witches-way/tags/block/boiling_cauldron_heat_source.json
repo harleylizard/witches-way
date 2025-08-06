@@ -1,0 +1,14 @@
+{
+  "values": [
+    "#minecraft:campfires",
+    "#minecraft:fire",
+    "minecraft:torch",
+    "minecraft:wall_torch",
+    "minecraft:soul_torch",
+    "minecraft:soul_wall_torch",
+    "minecraft:magma_block",
+    "minecraft:shroomlight",
+    "minecraft:lava",
+    "biomesoplenty:burning_blossom"
+  ]
+}
