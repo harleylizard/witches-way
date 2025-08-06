@@ -4,6 +4,7 @@ import com.harleylizard.witches_way.common.block.*;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -70,6 +71,39 @@ public final class WitchesWayBlocks {
     public static final Block MAGENTA_STONE_ALTAR = stoneAltar();
     public static final Block PINK_STONE_ALTAR = stoneAltar();
 
+    public static final Block WHITE_GOAT_WOOL = goatWool(DyeColor.WHITE);
+    public static final Block WHITE_BLOODY_GOAT_WOOL = goatWool(DyeColor.WHITE);
+    public static final Block LIGHT_GRAY_GOAT_WOOL = goatWool(DyeColor.LIGHT_GRAY);
+    public static final Block LIGHT_GRAY_BLOODY_GOAT_WOOL = goatWool(DyeColor.LIGHT_GRAY);
+    public static final Block GRAY_GOAT_WOOL = goatWool(DyeColor.GRAY);
+    public static final Block GRAY_BLOODY_GOAT_WOOL = goatWool(DyeColor.GRAY);
+    public static final Block BLACK_GOAT_WOOL = goatWool(DyeColor.BLACK);
+    public static final Block BLACK_BLOODY_GOAT_WOOL = goatWool(DyeColor.BLACK);
+    public static final Block BROWN_GOAT_WOOL = goatWool(DyeColor.BROWN);
+    public static final Block BROWN_BLOODY_GOAT_WOOL = goatWool(DyeColor.BROWN);
+    public static final Block RED_GOAT_WOOL = goatWool(DyeColor.RED);
+    public static final Block RED_BLOODY_GOAT_WOOL = goatWool(DyeColor.RED);
+    public static final Block ORANGE_GOAT_WOOL = goatWool(DyeColor.ORANGE);
+    public static final Block ORANGE_BLOODY_GOAT_WOOL = goatWool(DyeColor.ORANGE);
+    public static final Block YELLOW_GOAT_WOOL = goatWool(DyeColor.YELLOW);
+    public static final Block YELLOW_BLOODY_GOAT_WOOL = goatWool(DyeColor.YELLOW);
+    public static final Block LIME_GOAT_WOOL = goatWool(DyeColor.LIME);
+    public static final Block LIME_BLOODY_GOAT_WOOL = goatWool(DyeColor.LIME);
+    public static final Block GREEN_GOAT_WOOL = goatWool(DyeColor.GREEN);
+    public static final Block GREEN_BLOODY_GOAT_WOOL = goatWool(DyeColor.GREEN);
+    public static final Block CYAN_GOAT_WOOL = goatWool(DyeColor.CYAN);
+    public static final Block CYAN_BLOODY_GOAT_WOOL = goatWool(DyeColor.CYAN);
+    public static final Block LIGHT_BLUE_GOAT_WOOL = goatWool(DyeColor.LIGHT_BLUE);
+    public static final Block LIGHT_BLUE_BLOODY_GOAT_WOOL = goatWool(DyeColor.LIGHT_BLUE);
+    public static final Block BLUE_GOAT_WOOL = goatWool(DyeColor.BLUE);
+    public static final Block BLUE_BLOODY_GOAT_WOOL = goatWool(DyeColor.BLUE);
+    public static final Block PURPLE_GOAT_WOOL = goatWool(DyeColor.PURPLE);
+    public static final Block PURPLE_BLOODY_GOAT_WOOL = goatWool(DyeColor.PURPLE);
+    public static final Block MAGENTA_GOAT_WOOL = goatWool(DyeColor.MAGENTA);
+    public static final Block MAGENTA_BLOODY_GOAT_WOOL = goatWool(DyeColor.MAGENTA);
+    public static final Block PINK_GOAT_WOOL = goatWool(DyeColor.PINK);
+    public static final Block PINK_BLOODY_GOAT_WOOL = goatWool(DyeColor.PINK);
+
     public static void register() {
         register("alder_log", ALDER_LOG);
         register("alder_wood", ALDER_WOOD);
@@ -125,6 +159,39 @@ public final class WitchesWayBlocks {
         register("purple_stone_altar", PURPLE_STONE_ALTAR);
         register("magenta_stone_altar", MAGENTA_STONE_ALTAR);
         register("pink_stone_altar", PINK_STONE_ALTAR);
+
+        register("white_goat_wool", WHITE_GOAT_WOOL);
+        register("white_bloody_goat_wool", WHITE_BLOODY_GOAT_WOOL);
+        register("light_gray_goat_wool", LIGHT_GRAY_GOAT_WOOL);
+        register("light_gray_bloody_goat_wool", LIGHT_BLUE_BLOODY_GOAT_WOOL);
+        register("gray_goat_wool", GRAY_GOAT_WOOL);
+        register("gray_bloody_goat_wool", GRAY_BLOODY_GOAT_WOOL);
+        register("black_goat_wool", BLACK_GOAT_WOOL);
+        register("black_bloody_goat_wool", BLACK_BLOODY_GOAT_WOOL);
+        register("brown_goat_wool", BROWN_GOAT_WOOL);
+        register("brown_bloody_goat_wool", BROWN_BLOODY_GOAT_WOOL);
+        register("red_goat_wool", RED_GOAT_WOOL);
+        register("red_bloody_goat_wool", RED_GOAT_WOOL);
+        register("orange_goat_wool", ORANGE_GOAT_WOOL);
+        register("orange_bloody_goat_wool", ORANGE_BLOODY_GOAT_WOOL);
+        register("yellow_goat_wool", YELLOW_GOAT_WOOL);
+        register("yellow_bloody_goat_wool", YELLOW_BLOODY_GOAT_WOOL);
+        register("lime_goat_wool", LIME_GOAT_WOOL);
+        register("lime_bloody_goat_wool", LIME_BLOODY_GOAT_WOOL);
+        register("green_goat_wool", GREEN_GOAT_WOOL);
+        register("green_bloody_goat_wool", GREEN_BLOODY_GOAT_WOOL);
+        register("cyan_goat_wool", CYAN_GOAT_WOOL);
+        register("cyan_bloody_goat_wool", CYAN_BLOODY_GOAT_WOOL);
+        register("light_blue_goat_wool", LIGHT_BLUE_GOAT_WOOL);
+        register("light_blue_bloody_goat_wool", LIGHT_BLUE_BLOODY_GOAT_WOOL);
+        register("blue_goat_wool", BLUE_GOAT_WOOL);
+        register("blue_bloody_goat_wool", BLUE_BLOODY_GOAT_WOOL);
+        register("purple_goat_wool", PURPLE_GOAT_WOOL);
+        register("purple_bloody_goat_wool", PURPLE_BLOODY_GOAT_WOOL);
+        register("magenta_goat_wool", MAGENTA_GOAT_WOOL);
+        register("magenta_bloody_goat_wool", MAGENTA_BLOODY_GOAT_WOOL);
+        register("pink_goat_wool", PINK_GOAT_WOOL);
+        register("pink_bloody_goat_wool", PINK_BLOODY_GOAT_WOOL);
     }
 
     public static void register(String name, Block block) {
@@ -133,6 +200,10 @@ public final class WitchesWayBlocks {
 
     public static Block stoneAltar() {
         return new AltarBlock(Properties.ofFullCopy(Blocks.STONE));
+    }
+
+    public static Block goatWool(DyeColor color) {
+        return new Block(Properties.ofFullCopy(Blocks.WHITE_WOOL).mapColor(color));
     }
 
     public static Block log() {
