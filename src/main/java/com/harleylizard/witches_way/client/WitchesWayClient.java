@@ -1,9 +1,11 @@
 package com.harleylizard.witches_way.client;
 
+import com.harleylizard.witches_way.common.WitchesWayBlockEntities;
 import com.harleylizard.witches_way.common.WitchesWayBlocks;
 import com.harleylizard.witches_way.common.WitchesWayItems;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
@@ -43,6 +45,8 @@ public final class WitchesWayClient implements ClientModInitializer {
         item.register((itemStack, i) -> i == 0 ? alderLeaves : 0xFFFFFF, WitchesWayItems.ALDER_LEAVES, WitchesWayItems.HANGING_ALDER_LEAVES);
         item.register((itemStack, i) -> i == 0 ? hawthornLeaves : 0xFFFFFF, WitchesWayItems.HAWTHORN_LEAVES, WitchesWayItems.HANGING_HAWTHORN_LEAVES);
         item.register((itemStack, i) -> i == 0 ? rowanLeaves : 0xFFFFFF, WitchesWayItems.ROWAN_LEAVES, WitchesWayItems.HANGING_ROWAN_LEAVES);
+
+        BlockEntityRendererRegistry.register(WitchesWayBlockEntities.BOILING_CAULDRON, BoilingCauldronBlockEntityRenderer::new);
 
     }
 

@@ -3,13 +3,10 @@ package com.harleylizard.witches_way.common;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerWorldEvents;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
-import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
@@ -64,14 +61,6 @@ public final class WitchesWay implements ModInitializer {
 
     public static ResourceLocation resourceLocation(String path) {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
-    }
-
-    public static void syncBlockEntity(BlockEntity blockEntity) {
-        if (!blockEntity.getLevel().isClientSide) {
-            for (var player : PlayerLookup.tracking(blockEntity)) {
-                ServerPlayNetworking.getSender(player).sendPacket(blockEntity.getUpdatePacket());
-            }
-        }
     }
 
 }
