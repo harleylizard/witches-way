@@ -45,9 +45,6 @@ public final class WitchesWayItems {
     public static final Item SPANISH_MOSS = blockItem(WitchesWayBlocks.SPANISH_MOSS);
     public static final Item GLISTENING_WEED = blockItem(WitchesWayBlocks.GLISTENING_WEED);
 
-    public static final Item BELLADONNA_SEEDS = new ItemNameBlockItem(Blocks.WHEAT, new Item.Properties());
-    public static final Item MANDRAKE_SEEDS = new ItemNameBlockItem(Blocks.WHEAT, new Item.Properties());
-
     public static final Item BOILING_CAULDRON = blockItem(WitchesWayBlocks.BOILING_CAULDRON);
 
     public static final Item WHITE_STONE_ALTAR = blockItem(WitchesWayBlocks.WHITE_STONE_ALTAR);
@@ -66,6 +63,12 @@ public final class WitchesWayItems {
     public static final Item PURPLE_STONE_ALTAR = blockItem(WitchesWayBlocks.PURPLE_STONE_ALTAR);
     public static final Item MAGENTA_STONE_ALTAR = blockItem(WitchesWayBlocks.MAGENTA_STONE_ALTAR);
     public static final Item PINK_STONE_ALTAR = blockItem(WitchesWayBlocks.PINK_STONE_ALTAR);
+
+    public static final Item BELLADONNA_SEEDS = new ItemNameBlockItem(Blocks.WHEAT, new Item.Properties());
+    public static final Item MANDRAKE_SEEDS = new ItemNameBlockItem(Blocks.WHEAT, new Item.Properties());
+
+    public static final Item BELLADONNA = new Item(new Item.Properties());
+    public static final Item MANDRAKE_ROOT = new Item(new Item.Properties());
 
     public static final CreativeModeTab CREATIVE_TAB = FabricItemGroup.builder().icon(Items.STICK::getDefaultInstance).displayItems((parameters, output) -> {
         output.accept(ALDER_LOG);
@@ -107,9 +110,6 @@ public final class WitchesWayItems {
         output.accept(SPANISH_MOSS);
         output.accept(GLISTENING_WEED);
 
-        output.accept(BELLADONNA_SEEDS);
-        output.accept(MANDRAKE_SEEDS);
-
         output.accept(BOILING_CAULDRON);
 
         output.accept(WHITE_STONE_ALTAR);
@@ -128,6 +128,12 @@ public final class WitchesWayItems {
         output.accept(PURPLE_STONE_ALTAR);
         output.accept(MAGENTA_STONE_ALTAR);
         output.accept(PINK_STONE_ALTAR);
+
+        output.accept(BELLADONNA_SEEDS);
+        output.accept(MANDRAKE_SEEDS);
+
+        output.accept(BELLADONNA);
+        output.accept(MANDRAKE_ROOT);
 
     }).title(Component.translatable("itemGroup.witches-way")).build();
 
@@ -168,9 +174,6 @@ public final class WitchesWayItems {
         register("spanish_moss", SPANISH_MOSS);
         register("glistening_weed", GLISTENING_WEED);
 
-        register("belladonna_seeds", BELLADONNA_SEEDS);
-        register("mandrake_seeds", MANDRAKE_SEEDS);
-
         register("boiling_cauldron", BOILING_CAULDRON);
 
         register("white_stone_altar", WHITE_STONE_ALTAR);
@@ -189,6 +192,12 @@ public final class WitchesWayItems {
         register("purple_stone_altar", PURPLE_STONE_ALTAR);
         register("magenta_stone_altar", MAGENTA_STONE_ALTAR);
         register("pink_stone_altar", PINK_STONE_ALTAR);
+
+        register("belladonna_seeds", BELLADONNA_SEEDS);
+        register("mandrake_seeds", MANDRAKE_SEEDS);
+
+        register("belladonna", BELLADONNA);
+        register("mandrake_root", MANDRAKE_ROOT);
 
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, WitchesWay.resourceLocation("creative_tab"), CREATIVE_TAB);
 

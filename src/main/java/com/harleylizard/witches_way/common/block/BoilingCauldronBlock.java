@@ -86,11 +86,9 @@ public final class BoilingCauldronBlock extends Block implements EntityBlock {
 
     @Override
     protected void randomTick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
-        if (randomSource.nextInt(5) == 0) {
-            var below = blockPos.below();
+        var below = blockPos.below();
 
-            serverLevel.setBlock(blockPos, blockState.setValue(HEATED, ((IsBlockStateTag) serverLevel.getBlockState(below)).witchesWay$is(BlockStateTag.get("witches-way:boiling_cauldron_heat_source"))), UPDATE_ALL);
-        }
+        serverLevel.setBlock(blockPos, blockState.setValue(HEATED, ((IsBlockStateTag) serverLevel.getBlockState(below)).witchesWay$is(BlockStateTag.get("witches-way:boiling_cauldron_heat_source"))), UPDATE_ALL);
     }
 
     @Override
