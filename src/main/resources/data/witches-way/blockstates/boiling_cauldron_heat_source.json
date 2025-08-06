@@ -2,6 +2,36 @@
   "values": [
     {
       "block": "minecraft:torch"
+    },
+    {
+      "block": "minecraft:wall_torch"
+    },
+    {
+      "block": "minecraft:soul_torch"
+    },
+    {
+      "block": "minecraft:soul_wall_torch"
+    },
+    {
+      "block": "minecraft:campfire",
+      "properties": {
+        "lit": "true"
+      }
+    },
+    {
+      "block": "minecraft:soul_campfire",
+      "properties": {
+        "lit": "true"
+      }
+    },
+    {
+      "block": "minecraft:fire"
+    },
+    {
+      "block": "minecraft:magma_block"
+    },
+    {
+      "block": "minecraft:lava"
     }
   ]
 }

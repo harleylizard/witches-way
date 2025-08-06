@@ -1,7 +1,5 @@
 package com.harleylizard.witches_way.common;
 
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.mojang.serialization.Codec;
@@ -51,6 +49,8 @@ public record BlockStateTag(List<BlockStateRule> values) {
                 var result = CODEC.parse(JsonOps.INSTANCE, gson.fromJson(reader, JsonElement.class));
 
                 if (result.isError()) {
+                    WitchesWay.LOGGER.error(result.error().orElseThrow().message());
+
                     continue;
                 }
 
@@ -71,23 +71,42 @@ public record BlockStateTag(List<BlockStateRule> values) {
         return TAGS.getOrDefault(name, EMPTY);
     }
 
-    public record BlockStateRule(Block block, Map<Property<?>, Comparable<?>> properties) {
+    private record Properties(Map<String, Set<Map.Entry<Property<?>, Comparable<?>>>> map) {
+
+        private Properties(Map<String, Set<Map.Entry<Property<?>, Comparable<?>>>> map) {
+            this.map = map;
+        }
+
+        public boolean has(Map.Entry<String, String> entry) {
+            return map.get(entry.getKey()).stream().anyMatch(property -> property.getValue().toString().equals(entry.getValue()));
+        }
+
+        public Map.Entry<Property<?>, Comparable<?>> first(Map.Entry<String, String> entry) {
+            return map.get(entry.getKey()).stream().filter(property -> property.getValue().toString().equals(entry.getValue())).findFirst().orElseThrow();
+        }
+
+        public static Properties from(Block block) {
+            Map<String, Set<Map.Entry<Property<?>, Comparable<?>>>> map = new HashMap<>();
+
+            for (var entry : block.getStateDefinition().getPossibleStates().stream().flatMap(blockState -> blockState.getValues().entrySet().stream()).collect(Collectors.toSet())) {
+                var key = entry.getKey();
+
+                map.computeIfAbsent(key.getName(), name -> new HashSet<>()).add(entry);
+            }
+
+            return new Properties(Collections.unmodifiableMap(map));
+        }
+
+    }
+
+    private record BlockStateRule(Block block, Map<Property<?>, Comparable<?>> properties) {
         public static final Codec<BlockStateRule> CODEC = BuiltInRegistries.BLOCK.byNameCodec().dispatch("block", BlockStateRule::block, block -> {
-            BiMap<String, Map.Entry<Property<?>, Comparable<?>>> values = HashBiMap.create(Collections.unmodifiableMap(block.getStateDefinition().getPossibleStates().stream().flatMap(blockState -> blockState.getValues().entrySet().stream()).collect(Collectors.toMap(entry -> entry.getKey().getName(), entry -> entry))));
+            var values = Properties.from(block);
 
             MapCodec<Map<Property<?>, Comparable<?>>> codec = Codec.unboundedMap(Codec.STRING, Codec.STRING).fieldOf("properties").orElse(Map.of()).xmap(properties -> {
-                return properties.entrySet().stream().filter(entry -> {
-                    var name = entry.getKey();
-
-                    return values.containsKey(name) && values.get(name).getValue().toString().equals(entry.getValue());
-                }).map(entry -> {
-                    var property = values.get(entry.getKey());
-
-                    return Map.entry(property.getKey(), property.getValue());
-                }).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+                return properties.entrySet().stream().filter(values::has).map(values::first).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
             }, map -> {
-
-                return map.entrySet().stream().map(entry -> Map.entry(values.inverse().get(entry), entry.getValue().toString())).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+                return map.entrySet().stream().map(entry -> Map.entry(entry.getKey().getName(), entry.getValue().toString())).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
             });
 
             return codec.xmap(properties -> new BlockStateRule(block, properties), BlockStateRule::properties);
