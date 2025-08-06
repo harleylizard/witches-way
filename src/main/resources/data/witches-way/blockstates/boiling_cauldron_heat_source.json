@@ -1,5 +1,7 @@
 {
   "values": [
-
+    {
+      "block": "minecraft:torch"
+    }
   ]
 }
