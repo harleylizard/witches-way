@@ -160,6 +160,8 @@ var colouredItems =
         asTemplate("template/item/mohair.json") or
         asTemplate("template/item/bloody_mohair.json")
 
+var planks = asTemplate("template/recipe/planks.json")
+
 val process = tasks.register("process") {
     group = "build"
 
@@ -226,6 +228,13 @@ val process = tasks.register("process") {
             colouredItems.process("witches-way", "purple")
             colouredItems.process("witches-way", "magenta")
             colouredItems.process("witches-way", "pink")
+
+        }
+
+        group("data/witches-way/recipe") {
+            planks.process("witches-way", "alder")
+            planks.process("witches-way", "hawthorn")
+            planks.process("witches-way", "rowan")
 
         }
     }

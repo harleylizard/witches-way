@@ -1,16 +1,7 @@
 {
   "values": [
-    "witches-way:alder_log",
-    "witches-way:alder_wood",
-    "witches-way:stripped_alder_log",
-    "witches-way:stripped_alder_wood",
-    "witches-way:hawthorn_log",
-    "witches-way:hawthorn_wood",
-    "witches-way:stripped_hawthorn_log",
-    "witches-way:stripped_hawthorn_wood",
-    "witches-way:rowan_log",
-    "witches-way:rowan_wood",
-    "witches-way:stripped_rowan_log",
-    "witches-way:stripped_rowan_wood"
+    "#witches-way:alder_logs",
+    "#witches-way:hawthorn_logs",
+    "#witches-way:rowan_logs"
   ]
 }
