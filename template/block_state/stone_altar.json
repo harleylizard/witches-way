@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "clothed=false": {
+      "model": "{mod_id}:block/{name}_stone_altar"
+    },
+    "clothed=true": {
+      "model": "{mod_id}:block/{name}_stone_altar_clothed"
+    }
+  }
+}

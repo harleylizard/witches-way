@@ -52,7 +52,7 @@ public final class WitchesWayBlocks {
     public static final Block SPANISH_MOSS = new SpanishMossBlock(Properties.of().sound(SoundType.GRASS).noOcclusion().noCollission().randomTicks());
     public static final Block GLISTENING_WEED = new GlisteningWeedBlock(Properties.of().sound(SoundType.GRASS).noOcclusion().noCollission().randomTicks().lightLevel(blockState -> 6).emissiveRendering(Blocks::always).hasPostProcess(Blocks::always).offsetType(BlockBehaviour.OffsetType.XZ));
 
-    public static final Block BOILING_CAULDRON = new BoilingCauldronBlock(Properties.of().sound(SoundType.METAL).noOcclusion().randomTicks());
+    public static final Block BOILING_CAULDRON = new BoilingCauldronBlock(Properties.of().requiresCorrectToolForDrops().strength(1.75f).sound(SoundType.METAL).noOcclusion().randomTicks());
 
     public static final Block WHITE_STONE_ALTAR = stoneAltar();
     public static final Block LIGHT_GRAY_STONE_ALTAR = stoneAltar();

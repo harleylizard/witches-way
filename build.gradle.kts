@@ -62,7 +62,7 @@ sourceSets.main.get().resources.srcDir(processed.get().asFile)
 
 sealed interface Template {
 
-    fun process(modId: String, name: String, dest: String)
+    fun process(modId: String, name: String, path: java.nio.file.Path)
 
     infix fun or(template: Template): Template
 
@@ -70,25 +70,24 @@ sealed interface Template {
 
 class TemplateSet(private val set: MutableSet<Template>) : Template {
 
-    override fun process(modId: String, name: String, dest: String) {
+    override fun process(modId: String, name: String, path: java.nio.file.Path) {
         for (template in set) {
-            template.process(modId, name, dest)
+            template.process(modId, name, path)
         }
     }
 
     override infix fun or(template: Template) = this.also { it.set += template }
+
 }
 
-class TemplateFile(private val path: java.nio.file.Path) : Template {
+class TemplateFile(private val template: java.nio.file.Path) : Template {
 
-    override fun process(modId: String, name: String, dest: String) {
-        if (!Files.isReadable(path)) {
-            logger.info("Path not found $path")
-
-            return
+    override fun process(modId: String, name: String, path: java.nio.file.Path) {
+        if (!Files.isRegularFile(template)) {
+            logger.info("Cannot find file ${template}")
         }
 
-        Files.newBufferedReader(path).use {
+        Files.newBufferedReader(template).use {
             val builder = StringBuilder()
 
             var line: String?
@@ -96,7 +95,7 @@ class TemplateFile(private val path: java.nio.file.Path) : Template {
                 builder.append(line!!.replace("{mod_id}", modId).replace("{name}", name)).append("\n")
             }
 
-            writeTo(processed.get().asFile.toPath().resolve("$dest/${name}_${path.fileName}"), builder)
+            writeTo(path.resolve("${name}_${template.fileName}"), builder)
         }
     }
 
@@ -110,7 +109,18 @@ class TemplateFile(private val path: java.nio.file.Path) : Template {
             it.flush()
         }
     }
+
 }
+
+class Group(private val path: java.nio.file.Path) {
+
+    fun Template.process(modId: String, name: String) {
+        process(modId, name, path)
+    }
+
+}
+
+inline fun group(path: String, unit: Group.() -> Unit) = Group(processed.get().asFile.toPath().resolve(path)).also(unit)
 
 fun asTemplate(path: String) = TemplateFile(project.layout.projectDirectory.file(path).asFile.toPath())
 
@@ -119,12 +129,17 @@ val log =
         asTemplate("template/block_state/wood.json")
 
 val wood =
-            log or
-            asTemplate("template/block_state/planks.json") or
-            asTemplate("template/block_state/stairs.json") or
-            asTemplate("template/block_state/slab.json") or
-            asTemplate("template/block_state/leaves.json") or
-            asTemplate("template/block_state/sapling.json")
+        log or
+        asTemplate("template/block_state/planks.json") or
+        asTemplate("template/block_state/stairs.json") or
+        asTemplate("template/block_state/slab.json") or
+        asTemplate("template/block_state/leaves.json") or
+        asTemplate("template/block_state/sapling.json")
+
+val coloured =
+        asTemplate("template/block_state/stone_altar.json") or
+        asTemplate("template/block_state/mohair.json") or
+        asTemplate("template/block_state/bloody_mohair.json")
 
 val logBlocks =
         asTemplate("template/block/log.json") or
@@ -132,13 +147,13 @@ val logBlocks =
         asTemplate("template/block/wood.json")
 
 val woodBlocks =
-            logBlocks or
-            asTemplate("template/block/planks.json") or
-            asTemplate("template/block/stairs.json") or
-            asTemplate("template/block/stairs_inner.json") or
-            asTemplate("template/block/stairs_outer.json") or
-            asTemplate("template/block/slab.json") or
-            asTemplate("template/block/slab_top.json")
+        logBlocks or
+        asTemplate("template/block/planks.json") or
+        asTemplate("template/block/stairs.json") or
+        asTemplate("template/block/stairs_inner.json") or
+        asTemplate("template/block/stairs_outer.json") or
+        asTemplate("template/block/slab.json") or
+        asTemplate("template/block/slab_top.json")
 
 val process = tasks.register("process") {
     group = "build"
@@ -146,23 +161,45 @@ val process = tasks.register("process") {
     doLast {
         processed.get().asFile.takeUnless { it.exists() }?.mkdirs()
 
-        wood.process("witches-way", "alder", "assets/witches-way/blockstates")
-        woodBlocks.process("witches-way", "alder", "assets/witches-way/models/block")
+        group("assets/witches-way/blockstates") {
+            wood.process("witches-way", "alder")
+            log.process("witches-way", "alder")
 
-        log.process("witches-way", "stripped_alder", "assets/witches-way/blockstates")
-        logBlocks.process("witches-way", "stripped_alder", "assets/witches-way/models/block")
+            wood.process("witches-way", "hawthorn")
+            log.process("witches-way", "hawthorn")
 
-        wood.process("witches-way", "hawthorn", "assets/witches-way/blockstates")
-        woodBlocks.process("witches-way", "hawthorn", "assets/witches-way/models/block")
+            wood.process("witches-way", "rowan")
+            log.process("witches-way", "rowan")
 
-        log.process("witches-way", "stripped_hawthorn", "assets/witches-way/blockstates")
-        logBlocks.process("witches-way", "stripped_hawthorn", "assets/witches-way/models/block")
+            coloured.process("witches-way", "white")
+            coloured.process("witches-way", "light_gray")
+            coloured.process("witches-way", "gray")
+            coloured.process("witches-way", "black")
+            coloured.process("witches-way", "brown")
+            coloured.process("witches-way", "red")
+            coloured.process("witches-way", "orange")
+            coloured.process("witches-way", "yellow")
+            coloured.process("witches-way", "lime")
+            coloured.process("witches-way", "green")
+            coloured.process("witches-way", "cyan")
+            coloured.process("witches-way", "light_blue")
+            coloured.process("witches-way", "blue")
+            coloured.process("witches-way", "purple")
+            coloured.process("witches-way", "magenta")
+            coloured.process("witches-way", "pink")
+        }
 
-        wood.process("witches-way", "rowan", "assets/witches-way/blockstates")
-        woodBlocks.process("witches-way", "rowan", "assets/witches-way/models/block")
+        group("assets/witches-way/models/block") {
+            woodBlocks.process("witches-way", "alder")
+            logBlocks.process("witches-way", "stripped_alder")
 
-        log.process("witches-way", "stripped_rowan", "assets/witches-way/blockstates")
-        logBlocks.process("witches-way", "stripped_rowan", "assets/witches-way/models/block")
+            woodBlocks.process("witches-way", "hawthorn")
+            logBlocks.process("witches-way", "stripped_hawthorn")
+
+            woodBlocks.process("witches-way", "rowan")
+            logBlocks.process("witches-way", "stripped_rowan")
+
+        }
     }
 }
 
