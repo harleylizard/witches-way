@@ -1,0 +1,19 @@
+{
+  "name": "Rowan Tree",
+  "icon": "witches-way:rowan_sapling",
+  "category": "witches-way:plants",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "witches-way:rowan_sapling",
+      "text": "The Rowan tree."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "witches-way:rowan_log,witches-way:rowan_wood,witches-way:stripped_rowan_log,witches-way:stripped_rowan_wood",
+      "title": "Rowan Logs",
+      "text": ""
+    }
+  ],
+  "sortnum": 4
+}

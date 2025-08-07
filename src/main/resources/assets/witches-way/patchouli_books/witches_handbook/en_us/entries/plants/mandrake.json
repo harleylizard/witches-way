@@ -1,0 +1,18 @@
+{
+  "name": "Mandrake",
+  "icon": "witches-way:mandrake_seeds",
+  "category": "witches-way:plants",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "witches-way:mandrake_seeds",
+      "text": "These are seeds."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "witches-way:mandrake_root",
+      "text": ""
+    }
+  ],
+  "sortnum": 1
+}

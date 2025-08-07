@@ -1,0 +1,21 @@
+{
+  "name": "Collecting Seeds",
+  "icon": "witches-way:belladonna_seeds",
+  "category": "witches-way:introduction",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "minecraft:short_grass",
+      "title": "Collecting",
+      "text": "Seeds can be found by breaking short grass or ferns."
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "Seeds",
+      "entries": [
+      ],
+      "text": "These are seeds."
+    }
+  ],
+  "sortnum": 0
+}

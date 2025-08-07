@@ -1,0 +1,19 @@
+{
+  "name": "Hawthorn Tree",
+  "icon": "witches-way:rowan_sapling",
+  "category": "witches-way:plants",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "witches-way:hawthorn_sapling",
+      "text": ""
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "witches-way:hawthorn_log,witches-way:hawthorn_wood,witches-way:stripped_hawthorn_log,witches-way:stripped_hawthorn_wood",
+      "title": "Hawthorn Logs",
+      "text": ""
+    }
+  ],
+  "sortnum": 3
+}

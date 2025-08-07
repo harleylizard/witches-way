@@ -1,0 +1,18 @@
+{
+  "name": "Belladonna",
+  "icon": "witches-way:belladonna_seeds",
+  "category": "witches-way:plants",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "witches-way:belladonna_seeds",
+      "text": "These are seeds."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "witches-way:belladonna",
+      "text": ""
+    }
+  ],
+  "sortnum": 0
+}
