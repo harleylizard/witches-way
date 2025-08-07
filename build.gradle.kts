@@ -56,9 +56,9 @@ java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(21))
 }
 
-val processed = project.layout.buildDirectory.dir("processed")
+val templated = project.layout.buildDirectory.dir("templated")
 
-sourceSets.main.get().resources.srcDir(processed.get().asFile)
+sourceSets.main.get().resources.srcDir(templated.get().asFile)
 
 sealed interface Template {
 
@@ -120,7 +120,7 @@ class Group(private val path: java.nio.file.Path) {
 
 }
 
-inline fun group(path: String, unit: Group.() -> Unit) = Group(processed.get().asFile.toPath().resolve(path)).also(unit)
+inline fun group(path: String, unit: Group.() -> Unit) = Group(templated.get().asFile.toPath().resolve(path)).also(unit)
 
 fun asTemplate(path: String) = TemplateFile(project.layout.projectDirectory.file(path).asFile.toPath())
 
@@ -155,11 +155,16 @@ val woodBlocks =
         asTemplate("template/block/slab.json") or
         asTemplate("template/block/slab_top.json")
 
+var colouredItems =
+        asTemplate("template/item/stone_altar.json") or
+        asTemplate("template/item/mohair.json") or
+        asTemplate("template/item/bloody_mohair.json")
+
 val process = tasks.register("process") {
     group = "build"
 
     doLast {
-        processed.get().asFile.takeUnless { it.exists() }?.mkdirs()
+        templated.get().asFile.takeUnless { it.exists() }?.mkdirs()
 
         group("assets/witches-way/blockstates") {
             wood.process("witches-way", "alder")
@@ -198,6 +203,26 @@ val process = tasks.register("process") {
 
             woodBlocks.process("witches-way", "rowan")
             logBlocks.process("witches-way", "stripped_rowan")
+
+        }
+
+        group("assets/witches-way/models/item") {
+            colouredItems.process("witches-way", "white")
+            colouredItems.process("witches-way", "light_gray")
+            colouredItems.process("witches-way", "gray")
+            colouredItems.process("witches-way", "black")
+            colouredItems.process("witches-way", "brown")
+            colouredItems.process("witches-way", "red")
+            colouredItems.process("witches-way", "orange")
+            colouredItems.process("witches-way", "yellow")
+            colouredItems.process("witches-way", "lime")
+            colouredItems.process("witches-way", "green")
+            colouredItems.process("witches-way", "cyan")
+            colouredItems.process("witches-way", "light_blue")
+            colouredItems.process("witches-way", "blue")
+            colouredItems.process("witches-way", "purple")
+            colouredItems.process("witches-way", "magenta")
+            colouredItems.process("witches-way", "pink")
 
         }
     }
