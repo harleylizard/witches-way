@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "L": {
+      "tag": "witches-way:logs_that_craft_altar"
+    },
+    "S": {
+      "item": "minecraft:stone_bricks"
+    },
+    "W": {
+      "item": "minecraft:white_wool"
+    }
+  },
+  "pattern": [
+    "WWW",
+    "SLS",
+    "SLS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "witches-way:white_stone_altar"
+  }
+}

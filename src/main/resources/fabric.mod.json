@@ -28,11 +28,17 @@
     "fabricloader": ">=0.16.14",
     "minecraft": "~1.21.1",
     "java": ">=21",
-    "fabric-api": "*"
+    "fabric-api": "*",
+    "patchouli": "*"
   },
   "suggests": {
     "another-mod": "*"
   },
   "custom": {
+    "loom:injected_interfaces": {
+      "net/minecraft/class_2680": [
+        "com/harleylizard/witches_way/common/IsBlockStateTag"
+      ]
+    }
   }
 }

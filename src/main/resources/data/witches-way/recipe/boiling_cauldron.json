@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "M": {
+      "item": "witches-way:mandrake_root"
+    }
+  },
+  "pattern": [
+    "I I",
+    "IMI",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "witches-way:boiling_cauldron"
+  }
+}

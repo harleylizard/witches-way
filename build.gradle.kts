@@ -13,6 +13,7 @@ repositories {
     maven("https://cursemaven.com")
     maven("https://maven.minecraftforge.net/")
     maven("https://mod-buildcraft.com/maven")
+    maven("https://maven.blamejared.com")
 }
 
 dependencies {
@@ -32,6 +33,10 @@ dependencies {
     }
 
     modRuntimeOnly("alexiil.mc.mod:simplepipes-all:0.13.2") {
+        exclude(group = "net.fabricmc.fabric-api")
+    }
+
+    modApi("vazkii.patchouli:Patchouli:1.21.1-92-FABRIC") {
         exclude(group = "net.fabricmc.fabric-api")
     }
 
