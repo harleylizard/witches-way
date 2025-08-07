@@ -198,39 +198,39 @@ public final class WitchesWayBlocks {
         Registry.register(BuiltInRegistries.BLOCK, WitchesWay.resourceLocation(name), block);
     }
 
-    public static Block stoneAltar() {
+    private static Block stoneAltar() {
         return new AltarBlock(Properties.ofFullCopy(Blocks.STONE));
     }
 
-    public static Block goatWool(DyeColor color) {
+    private static Block goatWool(DyeColor color) {
         return new Block(Properties.ofFullCopy(Blocks.WHITE_WOOL).mapColor(color));
     }
 
-    public static Block log() {
+    private static Block log() {
         return new RotatedPillarBlock(Properties.ofFullCopy(Blocks.OAK_LOG));
     }
 
-    public static Block planks() {
+    private static Block planks() {
         return new Block(Properties.ofFullCopy(Blocks.OAK_PLANKS));
     }
 
-    public static Block stairs(Block block) {
+    private static Block stairs(Block block) {
         return new StairBlock(block.defaultBlockState(), Properties.ofFullCopy(block));
     }
 
-    public static Block slab() {
+    private static Block slab() {
         return new SlabBlock(Properties.ofFullCopy(Blocks.OAK_PLANKS));
     }
 
-    public static Block leaves() {
+    private static Block leaves() {
         return Blocks.leaves(SoundType.GRASS);
     }
 
-    public static Block hangingLeaves() {
+    private static Block hangingLeaves() {
         return new HangingLeavesBlock(Properties.of().isValidSpawn(Blocks::never).sound(SoundType.GRASS).noCollission().noOcclusion().randomTicks().mapColor(MapColor.GRASS).pushReaction(PushReaction.DESTROY));
     }
 
-    public static Block sapling(String name, ResourceKey<ConfiguredFeature<?, ?>> feature) {
+    private static Block sapling(String name, ResourceKey<ConfiguredFeature<?, ?>> feature) {
         return new SaplingBlock(new TreeGrower(name, Optional.empty(), Optional.of(feature), Optional.empty()), Properties.ofFullCopy(Blocks.OAK_SAPLING));
     }
 

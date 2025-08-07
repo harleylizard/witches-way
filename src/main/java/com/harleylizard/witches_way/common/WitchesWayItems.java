@@ -306,7 +306,7 @@ public final class WitchesWayItems {
         Registry.register(BuiltInRegistries.ITEM, WitchesWay.resourceLocation(name), item);
     }
 
-    public static Item blockItem(Block block) {
+    private static Item blockItem(Block block) {
         return new BlockItem(block, new Item.Properties());
     }
 
