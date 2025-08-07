@@ -52,7 +52,7 @@ public final class BoilingCauldronBlock extends Block implements EntityBlock {
     }
 
     @Override
-    public @Nullable BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
+    public BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
         return set(defaultBlockState(), blockPlaceContext.getHorizontalDirection().getAxis());
     }
 

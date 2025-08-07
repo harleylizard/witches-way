@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.harleylizard"
-version = "1.0-SNAPSHOT"
+version = "1.0-alpha"
 
 repositories {
     mavenCentral()
@@ -41,6 +41,14 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+java {
+    withSourcesJar()
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+
+    toolchain.languageVersion.set(JavaLanguageVersion.of(21))
 }
 
 val processed = project.layout.buildDirectory.dir("processed")
