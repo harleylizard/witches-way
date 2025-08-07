@@ -1,0 +1,12 @@
+{
+  "name": "Seeds",
+  "icon": "witches-way:belladonna_seeds",
+  "category": "witches-way:introduction",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": ""
+    }
+  ],
+  "sortnum": 0
+}

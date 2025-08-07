@@ -1,0 +1,7 @@
+{
+  "name": "item.witches-way.witches_handbook",
+  "landing_text": "book.witches-way.landing_text",
+  "version": 1,
+  "creative_tab": "witches-way:creative_tab",
+  "use_resource_pack": true
+}

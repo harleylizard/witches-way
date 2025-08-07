@@ -56,5 +56,10 @@
   "block.witches-way.pink_stone_altar": "Pink Stone Altar",
 
   "item.witches-way.belladonna_seeds": "Belladonna Seeds",
-  "item.witches-way.mandrake_seeds": "Mandrake Seeds"
+  "item.witches-way.mandrake_seeds": "Mandrake Seeds",
+
+  "item.witches-way.belladonna": "Belladonna",
+  "item.witches-way.belladonna_root": "Belladonna Root",
+
+  "item.witches-way.witches_handbook": "Witches' Handbook"
 }

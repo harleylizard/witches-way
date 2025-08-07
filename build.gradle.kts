@@ -36,7 +36,7 @@ dependencies {
         exclude(group = "net.fabricmc.fabric-api")
     }
 
-    modApi("vazkii.patchouli:Patchouli:1.21.1-92-FABRIC") {
+    modImplementation("vazkii.patchouli:Patchouli:1.21.1-92-FABRIC") {
         exclude(group = "net.fabricmc.fabric-api")
     }
 
@@ -169,12 +169,15 @@ val process = tasks.register("process") {
         group("assets/witches-way/blockstates") {
             wood.process("witches-way", "alder")
             log.process("witches-way", "alder")
+            log.process("witches-way", "stripped_alder")
 
             wood.process("witches-way", "hawthorn")
             log.process("witches-way", "hawthorn")
+            log.process("witches-way", "stripped_hawthorn")
 
             wood.process("witches-way", "rowan")
             log.process("witches-way", "rowan")
+            log.process("witches-way", "stripped_rowan")
 
             coloured.process("witches-way", "white")
             coloured.process("witches-way", "light_gray")

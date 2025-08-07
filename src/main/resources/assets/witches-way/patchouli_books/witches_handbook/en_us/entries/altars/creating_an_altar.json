@@ -1,0 +1,12 @@
+{
+  "name": "Creating an Altar",
+  "icon": "witches-way:white_stone_altar",
+  "category": "witches-way:altar",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": ""
+    }
+  ],
+  "sortnum": 0
+}
