@@ -27,7 +27,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jetbrains.annotations.Nullable;
 
 public final class BoilingCauldronBlock extends Block implements EntityBlock {
     private static final VoxelShape SHAPE = Shapes.or(
@@ -89,6 +88,18 @@ public final class BoilingCauldronBlock extends Block implements EntityBlock {
         var below = blockPos.below();
 
         serverLevel.setBlock(blockPos, blockState.setValue(HEATED, ((IsBlockStateTag) serverLevel.getBlockState(below)).witchesWay$is(BlockStateTag.get("witches-way:boiling_cauldron_heat_source"))), UPDATE_ALL);
+    }
+
+    @Override
+    protected boolean hasAnalogOutputSignal(BlockState blockState) {
+        return true;
+    }
+
+    @Override
+    protected int getAnalogOutputSignal(BlockState blockState, Level level, BlockPos blockPos) {
+        var fluid = level.getBlockEntity(blockPos, WitchesWayBlockEntities.BOILING_CAULDRON).orElseThrow().getFluid();
+
+        return (int) Math.ceil(((float) fluid.amount / (float) fluid.getCapacity()) * 6.0f);
     }
 
     @Override
