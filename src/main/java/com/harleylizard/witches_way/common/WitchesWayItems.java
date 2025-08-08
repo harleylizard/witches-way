@@ -2,12 +2,13 @@ package com.harleylizard.witches_way.common;
 
 import com.harleylizard.witches_way.mixins.HolderSet$NamedAccessor;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.core.Registry;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvent;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
@@ -126,25 +127,19 @@ public final class WitchesWayItems {
                     var blocks = ((HolderSet$NamedAccessor<Block>) level.registryAccess().lookupOrThrow(Registries.BLOCK).get(tag).orElseThrow()).witchesWay$contents();
 
                     var block = blocks.get(random.nextInt(blocks.size())).value().defaultBlockState();
-                    if (block.is(Blocks.WITHER_ROSE)) {
+                    if (block.is(Blocks.WITHER_ROSE) || !block.canSurvive(level, blockPos)) {
                         block = WitchesWayBlocks.GLISTENING_WEED.defaultBlockState();
                     }
 
                     if (level.setBlock(blockPos, block, Block.UPDATE_ALL)) {
                         level.playSound(null,  blockPos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS);
 
+                        for (var player : PlayerLookup.tracking((ServerLevel) level, blockPos)) {
+                            ServerPlayNetworking.send(player, new MutatePayload(blockPos));
+                        }
                         context.getItemInHand().shrink(1);
-
                         return InteractionResult.CONSUME;
                     }
-                }
-
-                for (var i = 0; i < 15; i++) {
-                    var x = random.nextGaussian() * 0.03f;
-                    var y = 0.125f + random.nextGaussian() * 0.025f;
-                    var z = random.nextGaussian() * 0.03f;
-
-                    level.addParticle(ParticleTypes.FIREWORK, true, blockPos.getX() + 0.5f, blockPos.getY(), blockPos.getZ() + 0.5f, x, y, z);
                 }
                 return InteractionResult.SUCCESS;
             }

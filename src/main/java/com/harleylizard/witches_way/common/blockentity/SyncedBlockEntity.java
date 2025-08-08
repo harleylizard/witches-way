@@ -12,9 +12,9 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
-public sealed class SavedBlockEntity extends BlockEntity permits BoilingCauldronBlockEntity {
+public sealed class SyncedBlockEntity extends BlockEntity permits AltarBlockEntity, BoilingCauldronBlockEntity {
 
-    public SavedBlockEntity(BlockEntityType<?> blockEntityType, BlockPos blockPos, BlockState blockState) {
+    public SyncedBlockEntity(BlockEntityType<?> blockEntityType, BlockPos blockPos, BlockState blockState) {
         super(blockEntityType, blockPos, blockState);
     }
 

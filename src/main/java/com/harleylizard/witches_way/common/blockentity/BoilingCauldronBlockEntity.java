@@ -9,7 +9,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.state.BlockState;
 
-public final class BoilingCauldronBlockEntity extends SavedBlockEntity {
+public final class BoilingCauldronBlockEntity extends SyncedBlockEntity {
     private final SingleFluidStorage fluid = new SingleFluidStorage() {
 
         @Override
@@ -31,16 +31,16 @@ public final class BoilingCauldronBlockEntity extends SavedBlockEntity {
     }
 
     @Override
-    protected void saveAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         var fluidTag = new CompoundTag();
         fluid.writeNbt(fluidTag, provider);
 
-        compoundTag.put("Fluid", fluidTag);
+        tag.put("Fluid", fluidTag);
     }
 
     @Override
-    protected void loadAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
-        fluid.readNbt(compoundTag.getCompound("Fluid"), provider);
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider provider) {
+        fluid.readNbt(tag.getCompound("Fluid"), provider);
     }
 
     public SingleFluidStorage getFluid() {

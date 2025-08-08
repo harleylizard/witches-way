@@ -1,8 +1,10 @@
 package com.harleylizard.witches_way.common;
 
+import com.mojang.datafixers.kinds.IdF;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerWorldEvents;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
 import net.minecraft.resources.ResourceLocation;
@@ -57,6 +59,7 @@ public final class WitchesWay implements ModInitializer {
 
         FluidStorage.SIDED.registerForBlockEntity((cauldron, direction) -> direction != null && direction.getAxis().isHorizontal() ? cauldron.getFluid() : null, WitchesWayBlockEntities.BOILING_CAULDRON);
 
+        PayloadTypeRegistry.playS2C().register(MutatePayload.TYPE, MutatePayload.CODEC);
     }
 
     public static ResourceLocation resourceLocation(String path) {

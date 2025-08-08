@@ -71,38 +71,38 @@ public final class WitchesWayBlocks {
     public static final Block MAGENTA_STONE_ALTAR = stoneAltar();
     public static final Block PINK_STONE_ALTAR = stoneAltar();
 
-    public static final Block WHITE_MOHAIR = goatWool(DyeColor.WHITE);
-    public static final Block WHITE_BLOODY_MOHAIR = goatWool(DyeColor.WHITE);
-    public static final Block LIGHT_GRAY_MOHAIR = goatWool(DyeColor.LIGHT_GRAY);
-    public static final Block LIGHT_GRAY_BLOODY_MOHAIR = goatWool(DyeColor.LIGHT_GRAY);
-    public static final Block GRAY_MOHAIR = goatWool(DyeColor.GRAY);
-    public static final Block GRAY_BLOODY_MOHAIR = goatWool(DyeColor.GRAY);
-    public static final Block BLACK_MOHAIR = goatWool(DyeColor.BLACK);
-    public static final Block BLACK_BLOODY_MOHAIR = goatWool(DyeColor.BLACK);
-    public static final Block BROWN_MOHAIR = goatWool(DyeColor.BROWN);
-    public static final Block BROWN_BLOODY_MOHAIR = goatWool(DyeColor.BROWN);
-    public static final Block RED_MOHAIR = goatWool(DyeColor.RED);
-    public static final Block RED_BLOODY_MOHAIR = goatWool(DyeColor.RED);
-    public static final Block ORANGE_MOHAIR = goatWool(DyeColor.ORANGE);
-    public static final Block ORANGE_BLOODY_MOHAIR = goatWool(DyeColor.ORANGE);
-    public static final Block YELLOW_MOHAIR = goatWool(DyeColor.YELLOW);
-    public static final Block YELLOW_BLOODY_MOHAIR = goatWool(DyeColor.YELLOW);
-    public static final Block LIME_MOHAIR = goatWool(DyeColor.LIME);
-    public static final Block LIME_BLOODY_MOHAIR = goatWool(DyeColor.LIME);
-    public static final Block GREEN_MOHAIR = goatWool(DyeColor.GREEN);
-    public static final Block GREEN_BLOODY_MOHAIR = goatWool(DyeColor.GREEN);
-    public static final Block CYAN_MOHAIR = goatWool(DyeColor.CYAN);
-    public static final Block CYAN_BLOODY_MOHAIR = goatWool(DyeColor.CYAN);
-    public static final Block LIGHT_BLUE_MOHAIR = goatWool(DyeColor.LIGHT_BLUE);
-    public static final Block LIGHT_BLUE_BLOODY_MOHAIR = goatWool(DyeColor.LIGHT_BLUE);
-    public static final Block BLUE_MOHAIR = goatWool(DyeColor.BLUE);
-    public static final Block BLUE_BLOODY_MOHAIR = goatWool(DyeColor.BLUE);
-    public static final Block PURPLE_MOHAIR = goatWool(DyeColor.PURPLE);
-    public static final Block PURPLE_BLOODY_MOHAIR = goatWool(DyeColor.PURPLE);
-    public static final Block MAGENTA_MOHAIR = goatWool(DyeColor.MAGENTA);
-    public static final Block MAGENTA_BLOODY_MOHAIR = goatWool(DyeColor.MAGENTA);
-    public static final Block PINK_MOHAIR = goatWool(DyeColor.PINK);
-    public static final Block PINK_BLOODY_MOHAIR = goatWool(DyeColor.PINK);
+    public static final Block WHITE_MOHAIR = mohair(DyeColor.WHITE);
+    public static final Block WHITE_BLOODY_MOHAIR = mohair(DyeColor.WHITE);
+    public static final Block LIGHT_GRAY_MOHAIR = mohair(DyeColor.LIGHT_GRAY);
+    public static final Block LIGHT_GRAY_BLOODY_MOHAIR = mohair(DyeColor.LIGHT_GRAY);
+    public static final Block GRAY_MOHAIR = mohair(DyeColor.GRAY);
+    public static final Block GRAY_BLOODY_MOHAIR = mohair(DyeColor.GRAY);
+    public static final Block BLACK_MOHAIR = mohair(DyeColor.BLACK);
+    public static final Block BLACK_BLOODY_MOHAIR = mohair(DyeColor.BLACK);
+    public static final Block BROWN_MOHAIR = mohair(DyeColor.BROWN);
+    public static final Block BROWN_BLOODY_MOHAIR = mohair(DyeColor.BROWN);
+    public static final Block RED_MOHAIR = mohair(DyeColor.RED);
+    public static final Block RED_BLOODY_MOHAIR = mohair(DyeColor.RED);
+    public static final Block ORANGE_MOHAIR = mohair(DyeColor.ORANGE);
+    public static final Block ORANGE_BLOODY_MOHAIR = mohair(DyeColor.ORANGE);
+    public static final Block YELLOW_MOHAIR = mohair(DyeColor.YELLOW);
+    public static final Block YELLOW_BLOODY_MOHAIR = mohair(DyeColor.YELLOW);
+    public static final Block LIME_MOHAIR = mohair(DyeColor.LIME);
+    public static final Block LIME_BLOODY_MOHAIR = mohair(DyeColor.LIME);
+    public static final Block GREEN_MOHAIR = mohair(DyeColor.GREEN);
+    public static final Block GREEN_BLOODY_MOHAIR = mohair(DyeColor.GREEN);
+    public static final Block CYAN_MOHAIR = mohair(DyeColor.CYAN);
+    public static final Block CYAN_BLOODY_MOHAIR = mohair(DyeColor.CYAN);
+    public static final Block LIGHT_BLUE_MOHAIR = mohair(DyeColor.LIGHT_BLUE);
+    public static final Block LIGHT_BLUE_BLOODY_MOHAIR = mohair(DyeColor.LIGHT_BLUE);
+    public static final Block BLUE_MOHAIR = mohair(DyeColor.BLUE);
+    public static final Block BLUE_BLOODY_MOHAIR = mohair(DyeColor.BLUE);
+    public static final Block PURPLE_MOHAIR = mohair(DyeColor.PURPLE);
+    public static final Block PURPLE_BLOODY_MOHAIR = mohair(DyeColor.PURPLE);
+    public static final Block MAGENTA_MOHAIR = mohair(DyeColor.MAGENTA);
+    public static final Block MAGENTA_BLOODY_MOHAIR = mohair(DyeColor.MAGENTA);
+    public static final Block PINK_MOHAIR = mohair(DyeColor.PINK);
+    public static final Block PINK_BLOODY_MOHAIR = mohair(DyeColor.PINK);
 
     public static void register() {
         register("alder_log", ALDER_LOG);
@@ -202,7 +202,7 @@ public final class WitchesWayBlocks {
         return new AltarBlock(Properties.ofFullCopy(Blocks.STONE));
     }
 
-    private static Block goatWool(DyeColor color) {
+    private static Block mohair(DyeColor color) {
         return new Block(Properties.ofFullCopy(Blocks.WHITE_WOOL).mapColor(color));
     }
 

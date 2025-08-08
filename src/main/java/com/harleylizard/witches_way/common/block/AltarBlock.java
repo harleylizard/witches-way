@@ -3,6 +3,9 @@ package com.harleylizard.witches_way.common.block;
 import com.harleylizard.witches_way.common.WitchesWayBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
@@ -10,6 +13,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayDeque;
 import java.util.HashSet;
@@ -30,13 +34,18 @@ public final class AltarBlock extends Block implements EntityBlock {
     }
 
     @Override
-    protected BlockState updateShape(BlockState blockState, Direction direction, BlockState blockState2, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos blockPos2) {
-        return blockState.setValue(CLOTHED, countBlocks(levelAccessor, blockPos));
+    protected BlockState updateShape(BlockState blockState, Direction direction, BlockState blockState2, LevelAccessor level, BlockPos blockPos, BlockPos blockPos2) {
+        return blockState.setValue(CLOTHED, countBlocks(level, blockPos));
+    }
+
+    @Override
+    protected void onPlace(BlockState blockState, Level level, BlockPos blockPos, BlockState blockState2, boolean bl) {
+        level.getBlockEntity(blockPos, WitchesWayBlockEntities.ALTAR).orElseThrow().getAltar().update(level);
     }
 
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return blockState.getValue(CLOTHED) ? WitchesWayBlockEntities.ALTAR.create(blockPos, blockState) : null;
+        return WitchesWayBlockEntities.ALTAR.create(blockPos, blockState);
     }
 
     public boolean countBlocks(LevelAccessor level, BlockPos blockPos) {

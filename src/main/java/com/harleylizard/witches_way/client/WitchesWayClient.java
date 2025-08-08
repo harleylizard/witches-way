@@ -1,15 +1,18 @@
 package com.harleylizard.witches_way.client;
 
+import com.harleylizard.witches_way.common.MutatePayload;
 import com.harleylizard.witches_way.common.WitchesWayBlockEntities;
 import com.harleylizard.witches_way.common.WitchesWayBlocks;
 import com.harleylizard.witches_way.common.WitchesWayItems;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.level.BlockAndTintGetter;
 
 public final class WitchesWayClient implements ClientModInitializer {
@@ -47,6 +50,24 @@ public final class WitchesWayClient implements ClientModInitializer {
         item.register((itemStack, i) -> i == 0 ? rowanLeaves : 0xFFFFFF, WitchesWayItems.ROWAN_LEAVES, WitchesWayItems.HANGING_ROWAN_LEAVES);
 
         BlockEntityRendererRegistry.register(WitchesWayBlockEntities.BOILING_CAULDRON, BoilingCauldronBlockEntityRenderer::new);
+
+        ClientPlayNetworking.registerGlobalReceiver(MutatePayload.TYPE, (payload, context) -> {
+            var client = context.client();
+            client.execute(() -> {
+                var level = client.level;
+                var random = level.random;
+                var blockPos = payload.blockPos();
+                for (var i = 0; i < 5; i++) {
+                    var x = random.nextGaussian() * 0.03f;
+                    var y = 0.125f + random.nextGaussian() * 0.025f;
+                    var z = random.nextGaussian() * 0.03f;
+
+                    var offsetX = blockPos.getX() + 0.5f + (random.nextGaussian() - random.nextGaussian()) * 0.125;
+                    var offsetZ = blockPos.getZ() + 0.5f + (random.nextGaussian() - random.nextGaussian()) * 0.125;
+                    level.addParticle(ParticleTypes.FIREWORK, offsetX, blockPos.getY(), offsetZ, x, y, z);
+                }
+            });
+        });
 
     }
 
