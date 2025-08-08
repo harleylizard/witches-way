@@ -34,7 +34,7 @@
           "block": "log",
           "tallness": {
             "type": "minecraft:biased_to_bottom",
-            "min_inclusive": 4,
+            "min_inclusive": 3,
             "max_inclusive": 5
           }
         },

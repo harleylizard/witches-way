@@ -2,6 +2,6 @@
   "parent": "witches-way:block/white_stone_altar",
   "textures": {
     "side": "witches-way:block/white_stone_altar_side",
-    "top": "witches-way:block/white_mohair"
+    "top": "minecraft:block/white_wool"
   }
 }

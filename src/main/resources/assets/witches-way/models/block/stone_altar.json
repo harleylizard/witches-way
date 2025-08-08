@@ -3,6 +3,6 @@
   "textures": {
     "bottom": "minecraft:block/stone",
     "side": "witches-way:block/stone_altar_side",
-    "top": "minecraft:block/stone"
+    "top": "witches-way:block/stone_altar_top"
   }
 }

@@ -1,7 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "witches-way:block/glistening_weed_plant",
-    "layer1": "witches-way:block/glistening_weed_side"
+    "layer0": "witches-way:block/glistening_weed"
   }
 }
