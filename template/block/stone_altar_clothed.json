@@ -1,0 +1,7 @@
+{
+  "parent": "{mod_id}:block/{name}_stone_altar",
+  "textures": {
+    "side": "{mod_id}:block/{name}_stone_altar_side",
+    "top": "{mod_id}:block/{name}_stone_altar_top"
+  }
+}

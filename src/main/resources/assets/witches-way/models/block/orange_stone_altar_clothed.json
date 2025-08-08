@@ -1,7 +1,0 @@
-{
-  "parent": "witches-way:block/stone_altar",
-  "textures": {
-    "side": "witches-way:block/orange_stone_altar_side",
-    "top": "minecraft:block/orange_wool"
-  }
-}

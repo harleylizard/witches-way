@@ -156,6 +156,8 @@ val woodBlocks =
         asTemplate("template/block/slab_top.json")
 
 var colouredBlocks =
+        asTemplate("template/block/stone_altar.json") or
+        asTemplate("template/block/stone_altar_clothed.json") or
         asTemplate("template/block/mohair.json") or
         asTemplate("template/block/bloody_mohair.json")
 

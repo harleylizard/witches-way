@@ -2,6 +2,7 @@ package com.harleylizard.witches_way.common.blockentity;
 
 import com.harleylizard.witches_way.common.WitchesWayBlockEntities;
 import com.harleylizard.witches_way.common.block.AltarBlock;
+import com.harleylizard.witches_way.common.power.PowerSource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
@@ -12,16 +13,19 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
 
 import static java.util.Objects.requireNonNull;
 
 public final class Altar implements Comparable<Altar> {
+    private final PowerSource source = new PowerSource();
+
     private OptionalBlockPos optional = EmptyBlockPos.EMPTY;
 
     private long time;
 
     public void save(CompoundTag tag) {
+        source.save(tag);
+
         tag.putLong("Time", time);
         if (optional.isNotEmpty()) {
             tag.put("BlockPos", optional.save());
@@ -29,6 +33,8 @@ public final class Altar implements Comparable<Altar> {
     }
 
     public void load(CompoundTag tag) {
+        source.load(tag);
+
         time = tag.getLong("Time");
         if (tag.contains("BlockPos")) {
             optional = AltarBlockPos.of(tag);
@@ -51,11 +57,20 @@ public final class Altar implements Comparable<Altar> {
 
     public void makeEmpty() {
         optional = EmptyBlockPos.EMPTY;
+        source.set(0);
+    }
+
+    public void tick() {
+
     }
 
     @Nullable
-    public Altar getAltar(Level level) {
+    public Altar realAltar(Level level) {
         return optional.isEmpty(level) ? null : requireNonNull(((AltarBlockEntity) level.getBlockEntity(optional.asBlockPos()))).getAltar();
+    }
+
+    public boolean is(BlockPos blockPos) {
+        return optional.asBlockPos() == blockPos;
     }
 
     @Override

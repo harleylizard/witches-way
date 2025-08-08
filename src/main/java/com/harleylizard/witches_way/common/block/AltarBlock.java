@@ -1,8 +1,8 @@
 package com.harleylizard.witches_way.common.block;
 
 import com.harleylizard.witches_way.common.WitchesWayBlockEntities;
-import it.unimi.dsi.fastutil.objects.AbstractObject2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import com.harleylizard.witches_way.common.blockentity.AltarBlockEntity;
+import com.harleylizard.witches_way.mixins.BaseEntityBlockInvoker;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
@@ -10,9 +10,12 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
@@ -46,6 +49,11 @@ public final class AltarBlock extends Block implements EntityBlock {
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
         return WitchesWayBlockEntities.ALTAR.create(blockPos, blockState);
+    }
+
+    @Override
+    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> type) {
+        return level.isClientSide ? null : BaseEntityBlockInvoker.witchesWay$createTickerHelper(type, WitchesWayBlockEntities.ALTAR, AltarBlockEntity::serverTick);
     }
 
     public Counted countBlocks(LevelAccessor level, BlockPos blockPos) {
