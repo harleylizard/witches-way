@@ -3,6 +3,7 @@ package com.harleylizard.witches_way.common;
 import com.harleylizard.witches_way.mixins.HolderSet$NamedAccessor;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.core.Registry;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -119,18 +120,32 @@ public final class WitchesWayItems {
 
             var tag = WitchesWayBlockTags.CAN_MUTATE;
             if (level.getBlockState(blockPos).is(tag)) {
-                if (!level.isClientSide) {
-                    var random = level.random;
+                var random = level.random;
 
+                if (!level.isClientSide) {
                     var blocks = ((HolderSet$NamedAccessor<Block>) level.registryAccess().lookupOrThrow(Registries.BLOCK).get(tag).orElseThrow()).witchesWay$contents();
 
-                    level.setBlock(blockPos, blocks.get(random.nextInt(blocks.size())).value().defaultBlockState(), Block.UPDATE_ALL);
+                    var block = blocks.get(random.nextInt(blocks.size())).value().defaultBlockState();
+                    if (block.is(Blocks.WITHER_ROSE)) {
+                        block = WitchesWayBlocks.GLISTENING_WEED.defaultBlockState();
+                    }
 
-                    context.getItemInHand().shrink(1);
-                    return InteractionResult.CONSUME;
+                    if (level.setBlock(blockPos, block, Block.UPDATE_ALL)) {
+                        level.playSound(null,  blockPos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS);
+
+                        context.getItemInHand().shrink(1);
+
+                        return InteractionResult.CONSUME;
+                    }
                 }
 
-                level.playSound(context.getPlayer(),  blockPos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS);
+                for (var i = 0; i < 15; i++) {
+                    var x = random.nextGaussian() * 0.03f;
+                    var y = 0.125f + random.nextGaussian() * 0.025f;
+                    var z = random.nextGaussian() * 0.03f;
+
+                    level.addParticle(ParticleTypes.FIREWORK, true, blockPos.getX() + 0.5f, blockPos.getY(), blockPos.getZ() + 0.5f, x, y, z);
+                }
                 return InteractionResult.SUCCESS;
             }
             return InteractionResult.PASS;

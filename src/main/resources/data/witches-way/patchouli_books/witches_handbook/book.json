@@ -4,5 +4,6 @@
   "version": 1,
   "creative_tab": "witches-way:creative_tab",
   "show_progress": false,
-  "use_resource_pack": true
+  "use_resource_pack": true,
+  "model": "witches-way:witches_handbook"
 }

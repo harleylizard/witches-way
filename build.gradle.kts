@@ -62,7 +62,7 @@ sourceSets.main.get().resources.srcDir(templated.get().asFile)
 
 sealed interface Template {
 
-    fun process(modId: String, name: String, path: java.nio.file.Path)
+    fun process(name: String, path: java.nio.file.Path)
 
     infix fun or(template: Template): Template
 
@@ -70,9 +70,9 @@ sealed interface Template {
 
 class TemplateSet(private val set: MutableSet<Template>) : Template {
 
-    override fun process(modId: String, name: String, path: java.nio.file.Path) {
+    override fun process(name: String, path: java.nio.file.Path) {
         for (template in set) {
-            template.process(modId, name, path)
+            template.process(name, path)
         }
     }
 
@@ -82,7 +82,7 @@ class TemplateSet(private val set: MutableSet<Template>) : Template {
 
 class TemplateFile(private val template: java.nio.file.Path) : Template {
 
-    override fun process(modId: String, name: String, path: java.nio.file.Path) {
+    override fun process(name: String, path: java.nio.file.Path) {
         if (!Files.isRegularFile(template)) {
             logger.info("Cannot find file ${template}")
         }
@@ -92,7 +92,7 @@ class TemplateFile(private val template: java.nio.file.Path) : Template {
 
             var line: String?
             while (it.readLine().also { line = it } != null) {
-                builder.append(line!!.replace("{mod_id}", modId).replace("{name}", name)).append("\n")
+                builder.append(line!!.replace("{mod_id}", "witches-way").replace("{name}", name)).append("\n")
             }
 
             writeTo(path.resolve("${name}_${template.fileName}"), builder)
@@ -114,8 +114,8 @@ class TemplateFile(private val template: java.nio.file.Path) : Template {
 
 class Group(private val path: java.nio.file.Path) {
 
-    fun Template.process(modId: String, name: String) {
-        process(modId, name, path)
+    fun Template.process(name: String) {
+        process(name, path)
     }
 
 }
@@ -169,72 +169,72 @@ val process = tasks.register("process") {
         templated.get().asFile.takeUnless { it.exists() }?.mkdirs()
 
         group("assets/witches-way/blockstates") {
-            wood.process("witches-way", "alder")
-            log.process("witches-way", "alder")
-            log.process("witches-way", "stripped_alder")
+            wood.process("alder")
+            log.process("alder")
+            log.process("stripped_alder")
 
-            wood.process("witches-way", "hawthorn")
-            log.process("witches-way", "hawthorn")
-            log.process("witches-way", "stripped_hawthorn")
+            wood.process("hawthorn")
+            log.process("hawthorn")
+            log.process("stripped_hawthorn")
 
-            wood.process("witches-way", "rowan")
-            log.process("witches-way", "rowan")
-            log.process("witches-way", "stripped_rowan")
+            wood.process("rowan")
+            log.process("rowan")
+            log.process("stripped_rowan")
 
-            coloured.process("witches-way", "white")
-            coloured.process("witches-way", "light_gray")
-            coloured.process("witches-way", "gray")
-            coloured.process("witches-way", "black")
-            coloured.process("witches-way", "brown")
-            coloured.process("witches-way", "red")
-            coloured.process("witches-way", "orange")
-            coloured.process("witches-way", "yellow")
-            coloured.process("witches-way", "lime")
-            coloured.process("witches-way", "green")
-            coloured.process("witches-way", "cyan")
-            coloured.process("witches-way", "light_blue")
-            coloured.process("witches-way", "blue")
-            coloured.process("witches-way", "purple")
-            coloured.process("witches-way", "magenta")
-            coloured.process("witches-way", "pink")
+            coloured.process("white")
+            coloured.process("light_gray")
+            coloured.process("gray")
+            coloured.process("black")
+            coloured.process("brown")
+            coloured.process("red")
+            coloured.process("orange")
+            coloured.process("yellow")
+            coloured.process("lime")
+            coloured.process("green")
+            coloured.process("cyan")
+            coloured.process("light_blue")
+            coloured.process("blue")
+            coloured.process("purple")
+            coloured.process("magenta")
+            coloured.process("pink")
         }
 
         group("assets/witches-way/models/block") {
-            woodBlocks.process("witches-way", "alder")
-            logBlocks.process("witches-way", "stripped_alder")
+            woodBlocks.process("alder")
+            logBlocks.process("stripped_alder")
 
-            woodBlocks.process("witches-way", "hawthorn")
-            logBlocks.process("witches-way", "stripped_hawthorn")
+            woodBlocks.process("hawthorn")
+            logBlocks.process("stripped_hawthorn")
 
-            woodBlocks.process("witches-way", "rowan")
-            logBlocks.process("witches-way", "stripped_rowan")
+            woodBlocks.process("rowan")
+            logBlocks.process("stripped_rowan")
 
         }
 
         group("assets/witches-way/models/item") {
-            colouredItems.process("witches-way", "white")
-            colouredItems.process("witches-way", "light_gray")
-            colouredItems.process("witches-way", "gray")
-            colouredItems.process("witches-way", "black")
-            colouredItems.process("witches-way", "brown")
-            colouredItems.process("witches-way", "red")
-            colouredItems.process("witches-way", "orange")
-            colouredItems.process("witches-way", "yellow")
-            colouredItems.process("witches-way", "lime")
-            colouredItems.process("witches-way", "green")
-            colouredItems.process("witches-way", "cyan")
-            colouredItems.process("witches-way", "light_blue")
-            colouredItems.process("witches-way", "blue")
-            colouredItems.process("witches-way", "purple")
-            colouredItems.process("witches-way", "magenta")
-            colouredItems.process("witches-way", "pink")
+            colouredItems.process("white")
+            colouredItems.process("light_gray")
+            colouredItems.process("gray")
+            colouredItems.process("black")
+            colouredItems.process("brown")
+            colouredItems.process("red")
+            colouredItems.process("orange")
+            colouredItems.process("yellow")
+            colouredItems.process("lime")
+            colouredItems.process("green")
+            colouredItems.process("cyan")
+            colouredItems.process("light_blue")
+            colouredItems.process("blue")
+            colouredItems.process("purple")
+            colouredItems.process("magenta")
+            colouredItems.process("pink")
 
         }
 
         group("data/witches-way/recipe") {
-            planks.process("witches-way", "alder")
-            planks.process("witches-way", "hawthorn")
-            planks.process("witches-way", "rowan")
+            planks.process("alder")
+            planks.process("hawthorn")
+            planks.process("rowan")
 
         }
     }
