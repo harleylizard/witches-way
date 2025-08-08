@@ -155,6 +155,10 @@ val woodBlocks =
         asTemplate("template/block/slab.json") or
         asTemplate("template/block/slab_top.json")
 
+var colouredBlocks =
+        asTemplate("template/block/mohair.json") or
+        asTemplate("template/block/bloody_mohair.json")
+
 var colouredItems =
         asTemplate("template/item/stone_altar.json") or
         asTemplate("template/item/mohair.json") or
@@ -209,6 +213,22 @@ val process = tasks.register("process") {
             woodBlocks.process("rowan")
             logBlocks.process("stripped_rowan")
 
+            colouredBlocks.process("white")
+            colouredBlocks.process("light_gray")
+            colouredBlocks.process("gray")
+            colouredBlocks.process("black")
+            colouredBlocks.process("brown")
+            colouredBlocks.process("red")
+            colouredBlocks.process("orange")
+            colouredBlocks.process("yellow")
+            colouredBlocks.process("lime")
+            colouredBlocks.process("green")
+            colouredBlocks.process("cyan")
+            colouredBlocks.process("light_blue")
+            colouredBlocks.process("blue")
+            colouredBlocks.process("purple")
+            colouredBlocks.process("magenta")
+            colouredBlocks.process("pink")
         }
 
         group("assets/witches-way/models/item") {
@@ -228,14 +248,12 @@ val process = tasks.register("process") {
             colouredItems.process("purple")
             colouredItems.process("magenta")
             colouredItems.process("pink")
-
         }
 
         group("data/witches-way/recipe") {
             planks.process("alder")
             planks.process("hawthorn")
             planks.process("rowan")
-
         }
     }
 }

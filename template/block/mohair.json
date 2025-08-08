@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "witches-way:block/white_mohair"
+    "all": "{mod_id}:block/{name}_mohair"
   }
 }
