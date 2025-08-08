@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.harleylizard"
-version = "1.0-alpha"
+version = "1.1-alpha"
 
 repositories {
     mavenCentral()

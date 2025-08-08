@@ -1,10 +1,17 @@
 package com.harleylizard.witches_way.common;
 
+import com.harleylizard.witches_way.mixins.HolderSet$NamedAccessor;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
@@ -102,6 +109,33 @@ public final class WitchesWayItems {
 
     public static final Item BELLADONNA = new Item(new Item.Properties());
     public static final Item MANDRAKE_ROOT = new Item(new Item.Properties());
+
+    public static final Item MUTATING_MIXTURE = new Item(new Item.Properties()) {
+
+        @Override
+        public InteractionResult useOn(UseOnContext context) {
+            var level = context.getLevel();
+            var blockPos = context.getClickedPos();
+
+            var tag = WitchesWayBlockTags.CAN_MUTATE;
+            if (level.getBlockState(blockPos).is(tag)) {
+                if (!level.isClientSide) {
+                    var random = level.random;
+
+                    var blocks = ((HolderSet$NamedAccessor<Block>) level.registryAccess().lookupOrThrow(Registries.BLOCK).get(tag).orElseThrow()).witchesWay$contents();
+
+                    level.setBlock(blockPos, blocks.get(random.nextInt(blocks.size())).value().defaultBlockState(), Block.UPDATE_ALL);
+
+                    context.getItemInHand().shrink(1);
+                    return InteractionResult.CONSUME;
+                }
+
+                level.playSound(context.getPlayer(),  blockPos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS);
+                return InteractionResult.SUCCESS;
+            }
+            return InteractionResult.PASS;
+        }
+    };
 
     public static final CreativeModeTab CREATIVE_TAB = FabricItemGroup.builder().icon(Items.STICK::getDefaultInstance).displayItems((parameters, output) -> {
         output.accept(ALDER_LOG);
@@ -201,6 +235,8 @@ public final class WitchesWayItems {
         output.accept(BELLADONNA);
         output.accept(MANDRAKE_ROOT);
 
+        output.accept(MUTATING_MIXTURE);
+
     }).title(Component.translatable("itemGroup.witches-way")).build();
 
     public static void register() {
@@ -297,6 +333,8 @@ public final class WitchesWayItems {
 
         register("belladonna", BELLADONNA);
         register("mandrake_root", MANDRAKE_ROOT);
+
+        register("mutating_mixture", MUTATING_MIXTURE);
 
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, WitchesWay.resourceLocation("creative_tab"), CREATIVE_TAB);
 
