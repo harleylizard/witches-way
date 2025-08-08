@@ -1,6 +1,7 @@
 package com.harleylizard.witches_way.common.blockentity;
 
 import com.harleylizard.witches_way.common.WitchesWayBlockEntities;
+import com.harleylizard.witches_way.common.block.AltarBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
@@ -11,6 +12,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 import static java.util.Objects.requireNonNull;
 
@@ -33,8 +35,22 @@ public final class Altar implements Comparable<Altar> {
         }
     }
 
-    public void update(Level level) {
+    public void update(Level level, AltarBlock block, BlockPos blockPos) {
         time = level.dayTime();
+
+        var counted = block.countBlocks(level, blockPos);
+        if (counted.isAltar()) {
+            var blockEntities = counted.blocks().stream().map(altar -> level.getBlockEntity(altar, WitchesWayBlockEntities.ALTAR).orElseThrow()).toList();
+
+            var oldest = oldest(blockEntities);
+            for (var blockEntity : blockEntities) {
+                blockEntity.getAltar().optional = new AltarBlockPos(oldest);
+            }
+        }
+    }
+
+    public void makeEmpty() {
+        optional = EmptyBlockPos.EMPTY;
     }
 
     @Nullable
@@ -47,8 +63,8 @@ public final class Altar implements Comparable<Altar> {
         return Long.compare(time, o.time);
     }
 
-    public static Altar oldest(List<Altar> list) {
-        return list.stream().min(Comparator.naturalOrder()).orElse(list.getFirst());
+    public static BlockPos oldest(List<AltarBlockEntity> list) {
+        return list.stream().min(Comparator.naturalOrder()).orElse(list.getFirst()).getBlockPos();
     }
 
     public interface OptionalBlockPos {
