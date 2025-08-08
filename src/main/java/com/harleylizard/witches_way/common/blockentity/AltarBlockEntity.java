@@ -41,8 +41,9 @@ public final class AltarBlockEntity extends SyncedBlockEntity implements Compara
     public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, AltarBlockEntity blockEntity) {
         var altar = blockEntity.getAltar().realAltar(blockEntity.level);
         if (altar != null && altar.is(blockEntity.getBlockPos())) {
-            blockEntity.ticks++;
-            if (blockEntity.ticks % 20 == 0) {
+            var ticks = blockEntity.ticks;
+            blockEntity.ticks = ticks = ((ticks + 1) % Integer.MAX_VALUE);
+            if (ticks % 20 == 0) {
                 altar.tick();
                 blockEntity.sync();
             }
