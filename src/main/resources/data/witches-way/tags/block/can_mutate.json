@@ -5,11 +5,6 @@
     "minecraft:short_grass",
     "minecraft:fern",
     "minecraft:moss_carpet",
-    "witches-way:glistening_weed",
-    "biomesoplenty:bramble_leaves",
-    "biomesoplenty:dead_grass",
-    "biomesoplenty:desert_grass",
-    "biomesoplenty:tiny_cactus",
-    "biomesoplenty:tundra_shrub"
+    "witches-way:glistening_weed"
   ]
 }

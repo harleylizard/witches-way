@@ -12,7 +12,10 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -147,7 +150,11 @@ public final class WitchesWayItems {
         }
     };
 
-    public static final CreativeModeTab CREATIVE_TAB = FabricItemGroup.builder().icon(Items.STICK::getDefaultInstance).displayItems((parameters, output) -> {
+    public static final Item ALDER_BROOM = broom();
+    public static final Item HAWTHORN_BROOM = broom();
+    public static final Item ROWAN_BROOM = broom();
+
+    public static final CreativeModeTab CREATIVE_TAB = FabricItemGroup.builder().icon(ALDER_BROOM::getDefaultInstance).displayItems((parameters, output) -> {
         output.accept(ALDER_LOG);
         output.accept(ALDER_WOOD);
         output.accept(STRIPPED_ALDER_LOG);
@@ -247,6 +254,10 @@ public final class WitchesWayItems {
 
         output.accept(MUTATING_MIXTURE);
 
+        output.accept(ALDER_BROOM);
+        output.accept(HAWTHORN_BROOM);
+        output.accept(ROWAN_BROOM);
+
     }).title(Component.translatable("itemGroup.witches-way")).build();
 
     public static void register() {
@@ -344,6 +355,10 @@ public final class WitchesWayItems {
         register("belladonna", BELLADONNA);
         register("mandrake_root", MANDRAKE_ROOT);
 
+        register("alder_broom", ALDER_BROOM);
+        register("hawthorn_broom", HAWTHORN_BROOM);
+        register("rowan_broom", ROWAN_BROOM);
+
         register("mutating_mixture", MUTATING_MIXTURE);
 
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, WitchesWay.resourceLocation("creative_tab"), CREATIVE_TAB);
@@ -356,6 +371,10 @@ public final class WitchesWayItems {
 
     private static Item blockItem(Block block) {
         return new BlockItem(block, new Item.Properties());
+    }
+
+    private static Item broom() {
+        return new Item(new Item.Properties().stacksTo(1));
     }
 
 }
