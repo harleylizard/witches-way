@@ -1,5 +1,21 @@
 {
   "values": [
-    "witches-way:boiling_cauldron"
+    "witches-way:boiling_cauldron",
+    "witches-way:white_stone_altar",
+    "witches-way:light_gray_stone_altar",
+    "witches-way:gray_stone_altar",
+    "witches-way:black_stone_altar",
+    "witches-way:brown_stone_altar",
+    "witches-way:red_stone_altar",
+    "witches-way:orange_stone_altar",
+    "witches-way:yellow_stone_altar",
+    "witches-way:lime_stone_altar",
+    "witches-way:green_stone_altar",
+    "witches-way:cyan_stone_altar",
+    "witches-way:light_blue_stone_altar",
+    "witches-way:blue_stone_altar",
+    "witches-way:purple_stone_altar",
+    "witches-way:magenta_stone_altar",
+    "witches-way:pink_stone_altar"
   ]
 }

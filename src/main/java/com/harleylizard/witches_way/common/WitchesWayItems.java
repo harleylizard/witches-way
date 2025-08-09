@@ -119,15 +119,15 @@ public final class WitchesWayItems {
             var level = context.getLevel();
             var blockPos = context.getClickedPos();
 
-            var tag = WitchesWayBlockTags.CAN_MUTATE;
-            if (level.getBlockState(blockPos).is(tag)) {
+            var blockState = level.getBlockState(blockPos);
+            if (blockState.is(WitchesWayBlockTags.CAN_MUTATE) && !blockState.is(WitchesWayBlockTags.CAN_NOT_MUTATE_INTO)) {
                 var random = level.random;
 
                 if (!level.isClientSide) {
-                    var blocks = ((HolderSet$NamedAccessor<Block>) level.registryAccess().lookupOrThrow(Registries.BLOCK).get(tag).orElseThrow()).witchesWay$contents();
+                    var blocks = ((HolderSet$NamedAccessor<Block>) level.registryAccess().lookupOrThrow(Registries.BLOCK).get(WitchesWayBlockTags.CAN_MUTATE).orElseThrow()).witchesWay$contents();
 
                     var block = blocks.get(random.nextInt(blocks.size())).value().defaultBlockState();
-                    if (block.is(Blocks.WITHER_ROSE) || !block.canSurvive(level, blockPos)) {
+                    if (block.is(WitchesWayBlockTags.CAN_NOT_MUTATE_INTO) || !block.canSurvive(level, blockPos)) {
                         block = WitchesWayBlocks.GLISTENING_WEED.defaultBlockState();
                     }
 

@@ -28,6 +28,7 @@ dependencies {
     modRuntimeOnly("com.github.glitchfiend:GlitchCore-fabric:1.21.1-2.1.0.0") {
         exclude(group = "net.fabricmc.fabric-api")
     }
+
     modRuntimeOnly("com.github.glitchfiend:TerraBlender-fabric:1.21.1-4.1.0.8") {
         exclude(group = "net.fabricmc.fabric-api")
     }
@@ -166,7 +167,10 @@ var colouredItems =
         asTemplate("template/item/mohair.json") or
         asTemplate("template/item/bloody_mohair.json")
 
-var planks = asTemplate("template/recipe/planks.json")
+var planks =
+    asTemplate("template/recipe/planks.json") or
+    asTemplate("template/recipe/stairs.json") or
+    asTemplate("template/recipe/slab.json")
 
 val process = tasks.register("process") {
     group = "build"
@@ -256,6 +260,26 @@ val process = tasks.register("process") {
             planks.process("alder")
             planks.process("hawthorn")
             planks.process("rowan")
+        }
+
+        group("data/witches-way/loot_table/blocks") {
+            var coloured = asTemplate("template/loot/block/stone_altar.json")
+            coloured.process("white")
+            coloured.process("light_gray")
+            coloured.process("gray")
+            coloured.process("black")
+            coloured.process("brown")
+            coloured.process("red")
+            coloured.process("orange")
+            coloured.process("yellow")
+            coloured.process("lime")
+            coloured.process("green")
+            coloured.process("cyan")
+            coloured.process("light_blue")
+            coloured.process("blue")
+            coloured.process("purple")
+            coloured.process("magenta")
+            coloured.process("pink")
         }
     }
 }

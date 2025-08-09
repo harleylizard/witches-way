@@ -36,14 +36,18 @@ public final class AltarBlock extends Block implements EntityBlock {
     protected BlockState updateShape(BlockState blockState, Direction direction, BlockState blockState2, LevelAccessor level, BlockPos blockPos, BlockPos blockPos2) {
         var altar = countBlocks(level, blockPos).isAltar();
         if (!altar) {
-            level.getBlockEntity(blockPos, WitchesWayBlockEntities.ALTAR).orElseThrow().getAltar().makeEmpty();
+            var blockEntity = level.getBlockEntity(blockPos, WitchesWayBlockEntities.ALTAR).orElseThrow();
+            blockEntity.getAltar().makeEmpty();
+            blockEntity.sync();
         }
         return blockState.setValue(CLOTHED, altar);
     }
 
     @Override
     protected void onPlace(BlockState blockState, Level level, BlockPos blockPos, BlockState blockState2, boolean bl) {
-        level.getBlockEntity(blockPos, WitchesWayBlockEntities.ALTAR).orElseThrow().getAltar().update(level, this, blockPos);
+        var blockEntity = level.getBlockEntity(blockPos, WitchesWayBlockEntities.ALTAR).orElseThrow();
+        blockEntity.getAltar().update(level, this, blockPos);
+        blockEntity.sync();
     }
 
     @Override

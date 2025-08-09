@@ -1,6 +1,6 @@
 {
-  "name": "Introduction",
-  "description": "Entry for beginner witches.",
+  "name": "book.witches-way.introduction",
+  "description": "book.witches-way.introduction_description",
   "icon": "witches-way:boiling_cauldron",
   "sortnum": 0
 }

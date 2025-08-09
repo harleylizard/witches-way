@@ -70,7 +70,7 @@ public final class Altar implements Comparable<Altar> {
     }
 
     public boolean is(BlockPos blockPos) {
-        return optional.asBlockPos() == blockPos;
+        return optional.asBlockPos().equals(blockPos);
     }
 
     @Override

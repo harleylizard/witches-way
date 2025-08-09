@@ -7,9 +7,14 @@ import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorageUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -24,19 +29,23 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public final class BoilingCauldronBlock extends Block implements EntityBlock {
-    private static final VoxelShape SHAPE = Shapes.or(
+    private static final VoxelShape SHAPE = Shapes.joinUnoptimized(Shapes.or(
             Shapes.box(0.0625, 0.125, 0.0625, 0.9375, 0.75, 0.9375),
             Shapes.box(0.6875, 0, 0.6875, 0.8125, 0.125, 0.8125),
             Shapes.box(0.1875, 0, 0.6875, 0.3125, 0.125, 0.8125),
             Shapes.box(0.1875, 0, 0.1875, 0.3125, 0.125, 0.3125),
             Shapes.box(0.6875, 0, 0.1875, 0.8125, 0.125, 0.3125),
             Shapes.box(0.125, 0.75, 0.125, 0.875, 0.9375, 0.875)
-    );
+    ), Shapes.or(
+            Shapes.box(0.125, 0.1875, 0.125, 0.875, 0.75, 0.875),
+            Shapes.box(0.1875, 0.75, 0.1875, 0.8125, 1, 0.8125)
+    ), BooleanOp.ONLY_FIRST);
 
     public static final BooleanProperty HEATED = BooleanProperty.create("heated");
 
@@ -100,6 +109,17 @@ public final class BoilingCauldronBlock extends Block implements EntityBlock {
         var fluid = level.getBlockEntity(blockPos, WitchesWayBlockEntities.BOILING_CAULDRON).orElseThrow().getFluid();
 
         return (int) Math.ceil(((float) fluid.amount / (float) fluid.getCapacity()) * 6.0f);
+    }
+
+    @Override
+    protected void entityInside(BlockState blockState, Level level, BlockPos blockPos, Entity entity) {
+        if (entity.getType() == EntityType.ITEM && blockState.getValue(HEATED)) {
+            if (!level.isClientSide) {
+                entity.remove(Entity.RemovalReason.DISCARDED);
+
+                level.playSound(null, blockPos.getX(), blockPos.getY(), blockPos.getZ(), SoundEvents.PLAYER_SPLASH, SoundSource.BLOCKS, 1.0f, 1.0f);
+            }
+        }
     }
 
     @Override

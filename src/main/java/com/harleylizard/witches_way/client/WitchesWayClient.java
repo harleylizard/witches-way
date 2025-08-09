@@ -58,13 +58,14 @@ public final class WitchesWayClient implements ClientModInitializer {
                 var random = level.random;
                 var blockPos = payload.blockPos();
                 for (var i = 0; i < 5; i++) {
-                    var x = random.nextGaussian() * 0.03f;
+                    var x = random.nextGaussian() * 0.0325f;
                     var y = 0.125f + random.nextGaussian() * 0.025f;
-                    var z = random.nextGaussian() * 0.03f;
+                    var z = random.nextGaussian() * 0.0325f;
 
-                    var offsetX = blockPos.getX() + 0.5f + (random.nextGaussian() - random.nextGaussian()) * 0.125;
-                    var offsetZ = blockPos.getZ() + 0.5f + (random.nextGaussian() - random.nextGaussian()) * 0.125;
-                    level.addParticle(ParticleTypes.FIREWORK, offsetX, blockPos.getY(), offsetZ, x, y, z);
+                    var offset = level.getBlockState(blockPos).getOffset(level, blockPos);
+                    var x0 = blockPos.getX() + offset.x + 0.5f + (random.nextGaussian() - random.nextGaussian()) * 0.175;
+                    var z0 = blockPos.getZ() + offset.z + 0.5f + (random.nextGaussian() - random.nextGaussian()) * 0.175;
+                    level.addParticle(ParticleTypes.FIREWORK, x0, blockPos.getY(), z0, x, y, z);
                 }
             });
         });

@@ -199,7 +199,7 @@ public final class WitchesWayBlocks {
     }
 
     private static Block stoneAltar() {
-        return new AltarBlock(Properties.ofFullCopy(Blocks.STONE));
+        return new AltarBlock(Properties.ofFullCopy(Blocks.STONE).requiresCorrectToolForDrops());
     }
 
     private static Block mohair(DyeColor color) {

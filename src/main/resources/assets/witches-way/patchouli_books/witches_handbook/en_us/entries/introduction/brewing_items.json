@@ -4,7 +4,14 @@
   "category": "witches-way:introduction",
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:spotlight",
+      "item": "witches-way:boiling_cauldron",
+      "title": "Brewing Items",
+      "text": ""
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "witches-way:boiling_cauldron",
       "text": ""
     }
   ],
